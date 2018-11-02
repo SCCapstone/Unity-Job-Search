@@ -921,7 +921,7 @@ GameObject:
   - component: {fileID: 883330175}
   - component: {fileID: 883330174}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: DoorKnob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -987,12 +987,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 883330173}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -48.63, y: 15.14, z: 37.38}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: -0.5391667, y: -0.01459999, z: 0.45000002}
+  m_LocalScale: {x: 0.02, y: 0.033333335, z: 0.041666668}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_Father: {fileID: 1419790101}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1112946526
 GameObject:
@@ -1335,9 +1335,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1419790098}
   m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -49.36, y: 1.64, z: 24.44}
+  m_LocalPosition: {x: -49.36, y: 0.6599995, z: 24.44}
   m_LocalScale: {x: 24, y: 50, z: 30}
-  m_Children: []
+  m_Children:
+  - {fileID: 883330177}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90.00001, y: 90, z: 0}
