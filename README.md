@@ -13,9 +13,5 @@ Add VR Interactable Component to your desired game object.
 -HandleOut, handles the cursor moving out of objects collision box.
 -HandleDoubleClick, handles double clicking the object when cursor is in collision box.
 
-Editing this branch on my own branch so I can push the changes to master.
--Victor
-
-rickabm: editing this README file for Milestone 9.
-
-Khalil: Editing the readme for M9
+Follow this to setup build and Oculus Dev with Unity:
+https://www.youtube.com/watch?v=LSypZfOChYE
