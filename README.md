@@ -2,16 +2,23 @@
 
 A VR Application in Unity that captures a series of locations and experiences that reflect the job search process at the University of South Carolina.
 
+# Installation for development
+## Prerequisites
+* Clone Unity Job Search Repository
+* Download [Latest Version of Unity](https://unity3d.com/get-unity/download)
+* Download [Android Studio](https://developer.android.com/studio/) <br/>
+When installing Unity, make sure `Android Build Support` is selected.
 
+### Setup Android Studio
+* Open Android Studio and click `Configure` at the bottom right and select `SDK Manager`.
+* Under `SDK Platforms`, make sure to check and install `API Level` 21 - 28 or from Android 5.0 up to the latest. (Currently 7) and click Apply. Installation can take up to several hours.
+![alt text](https://i.gyazo.com/e686af3fb9a67124b426f2d147f83d03.png "1")
 
-VR Interactable:
-Add VR Interactable Component to your desired game object.
--Add Collision Box 3D
--Next create a new script that has the following functions
--HandleOver, handles when the cursor is over.
--HandleClick, handles clicking with the cursor.
--HandleOut, handles the cursor moving out of objects collision box.
--HandleDoubleClick, handles double clicking the object when cursor is in collision box.
+* Move over to `SDK Tools` and select `Show Package Details` and install 28.0.2 or the latest. 
+* Make sure under `LLDB` latest version is installed.
+* Install `Android SDK Platform-Tools`, `Android SDK Tools` and `NDK`
+![alt text](https://i.gyazo.com/92ad82ca6d3fc59481df1e6f58c20ad9.png "2")
+* Once again, download will take a while
 
-Follow this to setup build and Oculus Dev with Unity:
-https://www.youtube.com/watch?v=LSypZfOChYE
+* After installation, go back to `Configure` Menu and select `Project Defaults` then `Project Structure`
+* Save the location directory of `Android SDK location`, `JDK location`, and `Android NDK location`
