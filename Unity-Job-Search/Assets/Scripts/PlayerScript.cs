@@ -13,7 +13,7 @@ public class PlayerScript : MonoBehaviour {
 	}
 	
 	void Update () {
-        joystick = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
+        joystick = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
 
         transform.eulerAngles = new Vector3(0, centerEye.transform.localEulerAngles.y, 0);
         transform.Translate(Vector3.forward * speed * joystick.y * Time.deltaTime);
