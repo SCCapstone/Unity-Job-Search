@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Dorm.unity
     guid: a72838d15ffcc034e97e1921ac3eb741
+  - enabled: 1
+    path: Assets/Scenes/Main_Scene.unity
+    guid: 3fb1f4f5d8abc4a409f39cc82605f421
   m_configObjects: {}
