@@ -51,11 +51,19 @@ public class PlayerScript : MonoBehaviour {
                     Door.GetComponent<DoorBehavior>().openDoorMenu();
                 }
             }
-            else if(hit.collider.gameObject.name=="Interview_Button")
+            else if(hit.collider.gameObject.name == "Interview_Button")
             {
                 InterviewButton.GetComponent<VRButtonBehavior>().changeColor();
                 DisplayText.text = "Button Touched";
                 SceneManager.LoadScene("Main_Scene");
+            }
+            else if(hit.collider.gameObject.name == "StartCard")
+            {
+                SceneManager.LoadScene("Dorm");
+            }
+            else if(hit.collider.gameObject.name == "ExitCard")
+            {
+
             }
             else
             {
