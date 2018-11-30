@@ -1,17 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuScript : MonoBehaviour
 {
     public GameObject oculusGoRemote;
     public GameObject centerEyeAnchor;
-
+    public Vector2 joystick;
+    public float speed;
+    public GameObject cameraRig;
 
     public GameObject StartCard;
     public GameObject ExitCard;
+
+    void HandlePlayerMovement()
+    {
+        joystick = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
+
+        transform.eulerAngles = new Vector3(0, centerEyeAnchor.transform.localEulerAngles.y, 0);
+        transform.Translate(Vector3.forward * speed * joystick.y * Time.deltaTime);
+        transform.Translate(Vector3.right * speed * joystick.x * Time.deltaTime);
+
+        cameraRig.transform.position = Vector3.Lerp(cameraRig.transform.position, transform.position, 10f * Time.deltaTime);
+    }
+
     void HandleGyroController()
     {
         oculusGoRemote.transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTrackedRemote);
@@ -45,5 +59,6 @@ public class MenuScript : MonoBehaviour
     void Udate()
     {
         HandleGyroController();
+        HandlePlayerMovement();
     }
 }
