@@ -9,6 +9,9 @@ public class MenuScript : MonoBehaviour
     public GameObject oculusGoRemote;
     public GameObject centerEyeAnchor;
 
+
+    public GameObject StartCard;
+    public GameObject ExitCard;
     void HandleGyroController()
     {
         oculusGoRemote.transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTrackedRemote);
@@ -21,6 +24,7 @@ public class MenuScript : MonoBehaviour
 
             if (hit.collider.gameObject.name == "StartCard")
             {
+                StartCard.GetComponent<VRButtonBehavior>().changeColor();
                 if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger)==1)
                 {
                     //DisplayText.text = "Opened Door";
@@ -29,7 +33,8 @@ public class MenuScript : MonoBehaviour
             }
             else if (hit.collider.gameObject.name == "ExitCard")
             {
-                f (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger)==1)
+                ExitCard.GetComponent<VRButtonBehavior>().changeColor();
+                if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger)==1)
                 {
                     Application.Quit();
                 }
