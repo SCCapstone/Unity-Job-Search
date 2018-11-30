@@ -27,7 +27,7 @@ public class MenuScript : MonoBehaviour
                     SceneManager.LoadScene("Dorm");
                 }
             }
-            else if (hit.collider.gameObject.nmae == "ExitCard")
+            else if (hit.collider.gameObject.name == "ExitCard")
             {
                 f (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger)==1)
                 {
