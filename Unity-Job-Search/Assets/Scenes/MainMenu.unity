@@ -208,9 +208,9 @@ MonoBehaviour:
   oculusGoRemote: {fileID: 0}
   DisplayText: {fileID: 0}
   Door: {fileID: 0}
+  CareerCenterButton: {fileID: 0}
   InterviewButton: {fileID: 0}
   FairButton: {fileID: 0}
-  ResumeButton: {fileID: 0}
 --- !u!1 &83192737
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,7 +459,6 @@ GameObject:
   - component: {fileID: 468138741}
   - component: {fileID: 468138740}
   - component: {fileID: 468138739}
-  - component: {fileID: 468138738}
   m_Layer: 0
   m_Name: OVRPlayerController
   m_TagString: Untagged
@@ -467,27 +466,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &468138738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 468138737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 908a20acb9b4c6e478cedeb25c41fc64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  joystick: {x: 0, y: 0}
-  speed: 11
-  centerEyeAnchor: {fileID: 1215071143}
-  cameraRig: {fileID: 1995271617}
-  oculusGoRemote: {fileID: 123579594}
-  DisplayText: {fileID: 0}
-  Door: {fileID: 0}
-  InterviewButton: {fileID: 0}
-  FairButton: {fileID: 0}
-  ResumeButton: {fileID: 0}
 --- !u!114 &468138739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -605,7 +583,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 319aeb988404fc14f999356d5a06df80, type: 3}
-    m_FontSize: 40
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0

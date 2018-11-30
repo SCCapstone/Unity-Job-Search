@@ -13,13 +13,14 @@ public class PlayerScript : MonoBehaviour {
     public Text DisplayText;
     public GameObject Door;
 
+    public GameObject CareerCenterButton;
+
     public GameObject InterviewButton;
 
     public GameObject FairButton;
 
-    public GameObject ResumeButton;
+    //public GameObject ResumeButton;
 
-    //public GameObject CareerCenterButton;
 	
     void HandlePlayerMovement()
     {
@@ -51,19 +52,11 @@ public class PlayerScript : MonoBehaviour {
                     Door.GetComponent<DoorBehavior>().openDoorMenu();
                 }
             }
-            else if(hit.collider.gameObject.name == "Interview_Button")
+            else if(hit.collider.gameObject.name == "CareerCenter_Button")
             {
-                InterviewButton.GetComponent<VRButtonBehavior>().changeColor();
+                CareerCenterButton.GetComponent<VRButtonBehavior>().changeColor();
                 DisplayText.text = "Button Touched";
-                SceneManager.LoadScene("Main_Scene");
-            }
-            else if(hit.collider.gameObject.name == "StartCard")
-            {
-                SceneManager.LoadScene("Dorm");
-            }
-            else if(hit.collider.gameObject.name == "ExitCard")
-            {
-
+                SceneManager.LoadScene("Outside_Front");
             }
             else
             {
