@@ -39,36 +39,40 @@ public class PlayerScript : MonoBehaviour {
 
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(oculusGoRemote.transform.position,transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+        if (Physics.Raycast(oculusGoRemote.transform.position,oculusGoRemote.transform.forward, out hit))
         {
-            Debug.Log(hit.collider.gameObject.name);
+            //Debug.Log(hit.collider.gameObject.name);
 
             if (hit.collider.gameObject.name == "door")
             {
                 Door.GetComponent<DoorBehavior>().displayText();
                 if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger)==1)
                 {
-                    DisplayText.text = "Opened Door";
+                    //DisplayText.text = "Opened Door";
                     Door.GetComponent<DoorBehavior>().openDoorMenu();
                 }
             }
             else if(hit.collider.gameObject.name == "CareerCenter_Button")
             {
+
                 CareerCenterButton.GetComponent<VRButtonBehavior>().changeColor();
-                DisplayText.text = "Button Touched";
-                SceneManager.LoadScene("Outside_Front");
+                if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) == 1)
+                {
+                    DisplayText.text = "Button Touched";
+                    SceneManager.LoadScene("Outside_Front");
+                }
             }
             else
             {
                 Door.GetComponent<DoorBehavior>().hideText();
                 Door.GetComponent<DoorBehavior>().closeDoorMenu();
-                InterviewButton.GetComponent<VRButtonBehavior>().resetColor();
+                CareerCenterButton.GetComponent<VRButtonBehavior>().resetColor();
 
             }
 
 
-            Debug.DrawLine(oculusGoRemote.transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.cyan);
-            Debug.Log("Did Hit");
+            //Debug.DrawLine(oculusGoRemote.transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.cyan);
+            //Debug.Log("Did Hit");
         }
     }
 
