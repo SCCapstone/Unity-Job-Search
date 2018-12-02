@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class PlayerScript : MonoBehaviour {
+public class PlayerScript : MonoBehaviour
+{
     public Vector2 joystick;
     public float speed;
     public GameObject centerEyeAnchor;
@@ -13,14 +14,15 @@ public class PlayerScript : MonoBehaviour {
     public Text DisplayText;
     public GameObject Door;
 
+    public GameObject CareerCenterButton;
+
     public GameObject InterviewButton;
 
     public GameObject FairButton;
 
-    public GameObject ResumeButton;
+    //public GameObject ResumeButton;
 
-    //public GameObject CareerCenterButton;
-	
+
     void HandlePlayerMovement()
     {
         joystick = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
@@ -38,40 +40,44 @@ public class PlayerScript : MonoBehaviour {
 
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(oculusGoRemote.transform.position,transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+        if (Physics.Raycast(oculusGoRemote.transform.position, oculusGoRemote.transform.forward, out hit))
         {
-            Debug.Log(hit.collider.gameObject.name);
+            //Debug.Log(hit.collider.gameObject.name);
 
             if (hit.collider.gameObject.name == "door")
             {
                 Door.GetComponent<DoorBehavior>().displayText();
-                if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger)==1)
+                if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) == 1)
                 {
-                    DisplayText.text = "Opened Door";
+                    //DisplayText.text = "Opened Door";
                     Door.GetComponent<DoorBehavior>().openDoorMenu();
                 }
             }
-            else if(hit.collider.gameObject.name=="Interview_Button")
+            else if (hit.collider.gameObject.name == "CareerCenter_Button")
             {
-                InterviewButton.GetComponent<VRButtonBehavior>().changeColor();
-                DisplayText.text = "Button Touched";
-                SceneManager.LoadScene("Main_Scene");
+
+                CareerCenterButton.GetComponent<VRButtonBehavior>().changeColor();
+                if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) == 1)
+                {
+                    DisplayText.text = "Button Touched";
+                    SceneManager.LoadScene("Outside_Front");
+                }
             }
             else
             {
                 Door.GetComponent<DoorBehavior>().hideText();
                 Door.GetComponent<DoorBehavior>().closeDoorMenu();
-                InterviewButton.GetComponent<VRButtonBehavior>().resetColor();
+                CareerCenterButton.GetComponent<VRButtonBehavior>().resetColor();
 
             }
 
 
-            Debug.DrawLine(oculusGoRemote.transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.cyan);
-            Debug.Log("Did Hit");
+            //Debug.DrawLine(oculusGoRemote.transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.cyan);
+            //Debug.Log("Did Hit");
         }
     }
 
-	void Update ()
+    void Update()
     {
         HandlePlayerMovement();
         HandleGyroController();
