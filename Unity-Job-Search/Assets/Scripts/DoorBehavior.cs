@@ -8,7 +8,6 @@ public class DoorBehavior : MonoBehaviour
 {
     public GameObject DoorMenu;
     public Text doorText;
-    public AudioSource openAduio;
 
     public void displayText()
     {
@@ -25,7 +24,6 @@ public class DoorBehavior : MonoBehaviour
     public void openDoorMenu()
     {
         DoorMenu.SetActive(true);
-        openAduio.Play(0);
     }
     public void closeDoorMenu()
     {
