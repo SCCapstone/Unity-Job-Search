@@ -56,7 +56,7 @@ public class MenuScript : MonoBehaviour
         }
     }
 
-    void Udate()
+    void Update()
     {
         HandleGyroController();
         HandlePlayerMovement();
