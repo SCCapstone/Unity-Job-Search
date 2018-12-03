@@ -970,6 +970,7 @@ GameObject:
   - component: {fileID: 1478213219}
   - component: {fileID: 1478213218}
   - component: {fileID: 1478213217}
+  - component: {fileID: 1478213223}
   m_Layer: 5
   m_Name: ExitCard
   m_TagString: Untagged
@@ -1195,6 +1196,24 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1478213215}
   m_CullTransparentMesh: 0
+--- !u!114 &1478213223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1478213215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47bd0cf91aaf7704b8fe45691404b774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oculusGoRemote: {fileID: 0}
+  centerEyeAnchor: {fileID: 0}
+  joystick: {x: 0, y: 0}
+  speed: 0
+  cameraRig: {fileID: 0}
+  StartCard: {fileID: 0}
+  ExitCard: {fileID: 0}
 --- !u!1 &1519149374
 GameObject:
   m_ObjectHideFlags: 0
@@ -1276,6 +1295,7 @@ GameObject:
   - component: {fileID: 1695683935}
   - component: {fileID: 1695683934}
   - component: {fileID: 1695683933}
+  - component: {fileID: 1695683939}
   m_Layer: 5
   m_Name: StartCard
   m_TagString: Untagged
@@ -1502,6 +1522,24 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1695683931}
   m_CullTransparentMesh: 0
+--- !u!114 &1695683939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1695683931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47bd0cf91aaf7704b8fe45691404b774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oculusGoRemote: {fileID: 0}
+  centerEyeAnchor: {fileID: 0}
+  joystick: {x: 0, y: 0}
+  speed: 0
+  cameraRig: {fileID: 0}
+  StartCard: {fileID: 0}
+  ExitCard: {fileID: 0}
 --- !u!1 &1729663719
 GameObject:
   m_ObjectHideFlags: 0
