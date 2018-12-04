@@ -38,6 +38,7 @@ public class MenuScript : MonoBehaviour
 
             if (hit.collider.gameObject.name == "StartCard")
             {
+                ExitCard.GetComponent<VRButtonBehavior>().resetColor();
                 StartCard.GetComponent<VRButtonBehavior>().changeColor();
                 if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) == 1)
                 {
@@ -47,6 +48,7 @@ public class MenuScript : MonoBehaviour
             }
             else if (hit.collider.gameObject.name == "ExitCard")
             {
+                StartCard.GetComponent<VRButtonBehavior>().resetColor();
                 ExitCard.GetComponent<VRButtonBehavior>().changeColor();
                 if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) == 1)
                 {
