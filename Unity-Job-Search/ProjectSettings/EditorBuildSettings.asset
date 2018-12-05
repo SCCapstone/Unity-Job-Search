@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Outside_Front.unity
     guid: 452c7d070de429543a6c5631031aa147
+  - enabled: 1
+    path: Assets/Scenes/Inside_Front_Entrance.unity
+    guid: aca4d625905807f4a897219533a15bd7
+  - enabled: 1
+    path: Assets/Scenes/Inside_Front_Desk.unity
+    guid: abfe6b486ece8b04095fdb15eea6e7cc
   m_configObjects: {}
