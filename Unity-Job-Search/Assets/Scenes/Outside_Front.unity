@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.52213645, g: 0.5340521, b: 0.5408514, a: 1}
+  m_IndirectSpecularColor: {r: 0.5233853, g: 0.53378373, b: 0.5393988, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -317,7 +317,7 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 492040537}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -549,8 +549,8 @@ MonoBehaviour:
   centerEyeAnchor: {fileID: 726525536}
   cameraRig: {fileID: 258687293}
   oculusGoRemote: {fileID: 1969736670}
-  outsideToInside: {fileID: 0}
-  outsideToDorm: {fileID: 0}
+  outsideToInside: {fileID: 2080181486}
+  outsideToDorm: {fileID: 492040537}
   insideToOutside: {fileID: 0}
   insideToFrontDesk: {fileID: 0}
   frontDeskToInside: {fileID: 0}
@@ -1230,7 +1230,7 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2080181486}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
