@@ -47,29 +47,45 @@ public class PlayerScript : MonoBehaviour
             if (hit.collider.gameObject.name == "door")
             {
                 Door.GetComponent<DoorBehavior>().displayText();
-                if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) == 1)
+                CareerCenterButton.GetComponent<VRButtonBehavior>().resetColor();
+                FairButton.GetComponent<VRButtonBehavior>().resetColor();
+                if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     //DisplayText.text = "Opened Door";
                     Door.GetComponent<DoorBehavior>().openDoorMenu();
                 }
             }
+            // Career Center
             else if (hit.collider.gameObject.name == "CareerCenter_Button")
             {
-
+                FairButton.GetComponent<VRButtonBehavior>().resetColor();
                 CareerCenterButton.GetComponent<VRButtonBehavior>().changeColor();
-                if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) == 1)
+                if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     DisplayText.text = "Button Touched";
                     SceneManager.LoadScene("Outside_Front");
                 }
             }
+
+            // Career Fair
+            else if (hit.collider.gameObject.name == "JobFair_Button")
+            {
+                CareerCenterButton.GetComponent<VRButtonBehavior>().resetColor();
+                FairButton.GetComponent<VRButtonBehavior>().changeColor();
+
+                if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    DisplayText.text = "Button Touched";
+                    SceneManager.LoadScene("emptyScene");
+                }
+            }
             else
             {
-                Door.GetComponent<DoorBehavior>().hideText();
                 Door.GetComponent<DoorBehavior>().closeDoorMenu();
-                CareerCenterButton.GetComponent<VRButtonBehavior>().resetColor();
-
+                Door.GetComponent<DoorBehavior>().hideText();
+                
             }
+           
 
 
             //Debug.DrawLine(oculusGoRemote.transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.cyan);

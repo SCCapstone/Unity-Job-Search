@@ -40,7 +40,7 @@ public class MenuScript : MonoBehaviour
             {
                 ExitCard.GetComponent<VRButtonBehavior>().resetColor();
                 StartCard.GetComponent<VRButtonBehavior>().changeColor();
-                if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) == 1)
+                if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     //DisplayText.text = "Opened Door";
                     SceneManager.LoadScene("Dorm");
@@ -50,7 +50,7 @@ public class MenuScript : MonoBehaviour
             {
                 StartCard.GetComponent<VRButtonBehavior>().resetColor();
                 ExitCard.GetComponent<VRButtonBehavior>().changeColor();
-                if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) == 1)
+                if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     Application.Quit();
                 }
