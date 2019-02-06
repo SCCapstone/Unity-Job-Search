@@ -31,7 +31,7 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         myCanvas.enabled = false;
-        Play.PlayPause();
+        
     }
 
     void HandlePlayerMovement()
@@ -100,15 +100,17 @@ public class PlayerScript : MonoBehaviour
             {
                 if(OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
-                    myCanvas.enabled = true;
                     Play.PlayPause();
+                    myCanvas.enabled = true;
+                    //Play.PlayPause();
                     
                 }
             }
             if ((hit.collider.gameObject.name == "handShake_exit" && OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) == true) || OVRInput.Get(OVRInput.Button.Back) == true)
             {
-                myCanvas.enabled = false;
                 
+                myCanvas.enabled = false;
+                Play.video.Stop();
             }
 
 

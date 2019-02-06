@@ -18,12 +18,16 @@ public class StreamVideo : MonoBehaviour {
         video.Prepare();
         while (!video.isPrepared)
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1.5f);
             break;
         }
         rawImage.texture = video.texture;
-        video.Play();
-        audio.Play();
+
+        if (video.isPrepared)
+        {
+            video.Play();
+            audio.Play();
+        }
     }
     public void PlayPause()
     {
