@@ -25,11 +25,13 @@ public class PlayerScript : MonoBehaviour
     public Canvas myCanvas;
     public GameObject laptop;
     public GameObject videoPlayer;
+    public StreamVideo Play;
+    public GameObject handShake_exit;
 
     void Start()
     {
         myCanvas.enabled = false;
-        
+        Play.PlayPause();
     }
 
     void HandlePlayerMovement()
@@ -98,13 +100,13 @@ public class PlayerScript : MonoBehaviour
             {
                 if(OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
-                    videoPlayer.SetActive(true);
                     myCanvas.enabled = true;
+                    Play.PlayPause();
+                    
                 }
             }
-            if (OVRInput.Get(OVRInput.Button.Back) == true)
+            if ((hit.collider.gameObject.name == "handShake_exit" && OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) == true) || OVRInput.Get(OVRInput.Button.Back) == true)
             {
-                videoPlayer.SetActive(false);
                 myCanvas.enabled = false;
                 
             }

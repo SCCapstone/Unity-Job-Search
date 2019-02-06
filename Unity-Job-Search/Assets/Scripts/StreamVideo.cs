@@ -9,13 +9,11 @@ public class StreamVideo : MonoBehaviour {
     public RawImage rawImage;
     public VideoPlayer video;
     public AudioSource audio;
+    private bool isPaused = false;
+    private bool firstRun = true;
 
-	// Use this for initialization
-	void Start () {
-        StartCoroutine(PlayVideo());
-	}
 	
-	IEnumerator PlayVideo()
+	public IEnumerator PlayVideo()
     {
         video.Prepare();
         while (!video.isPrepared)
@@ -26,5 +24,10 @@ public class StreamVideo : MonoBehaviour {
         rawImage.texture = video.texture;
         video.Play();
         audio.Play();
+    }
+    public void PlayPause()
+    {
+       
+            StartCoroutine(PlayVideo());
     }
 }
