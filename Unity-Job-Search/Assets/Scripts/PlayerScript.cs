@@ -22,6 +22,17 @@ public class PlayerScript : MonoBehaviour
 
     //public GameObject ResumeButton;
 
+    public Canvas myCanvas;
+    public GameObject laptop;
+    public GameObject videoPlayer;
+    public StreamVideo Play;
+    public GameObject handShake_exit;
+
+    void Start()
+    {
+        myCanvas.enabled = false;
+        
+    }
 
     void HandlePlayerMovement()
     {
@@ -37,7 +48,6 @@ public class PlayerScript : MonoBehaviour
     void HandleGyroController()
     {
         oculusGoRemote.transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTrackedRemote);
-
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(oculusGoRemote.transform.position, oculusGoRemote.transform.forward, out hit))
@@ -85,7 +95,24 @@ public class PlayerScript : MonoBehaviour
                 Door.GetComponent<DoorBehavior>().hideText();
                 
             }
-           
+
+            if(hit.collider.gameObject.name == "laptop")
+            {
+                if(OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    Play.PlayPause();
+                    myCanvas.enabled = true;
+                    //Play.PlayPause();
+                    
+                }
+            }
+            if ((hit.collider.gameObject.name == "handShake_exit" && OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) == true) || OVRInput.Get(OVRInput.Button.Back) == true)
+            {
+                
+                myCanvas.enabled = false;
+                Play.video.Stop();
+            }
+
 
 
             //Debug.DrawLine(oculusGoRemote.transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.cyan);
@@ -97,6 +124,6 @@ public class PlayerScript : MonoBehaviour
     {
         HandlePlayerMovement();
         HandleGyroController();
-
+        
     }
 }
