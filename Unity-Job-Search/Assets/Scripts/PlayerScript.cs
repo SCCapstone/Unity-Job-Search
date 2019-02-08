@@ -47,7 +47,7 @@ public class PlayerScript : MonoBehaviour
 
     void HandleGyroController()
     {
-        oculusGoRemote.transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTrackedRemote);
+        //oculusGoRemote.transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTrackedRemote);
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(oculusGoRemote.transform.position, oculusGoRemote.transform.forward, out hit))
@@ -86,7 +86,7 @@ public class PlayerScript : MonoBehaviour
                 if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     DisplayText.text = "Button Touched";
-                    SceneManager.LoadScene("emptyScene");
+                    SceneManager.LoadScene("CareerCenterFront");
                 }
             }
             else
