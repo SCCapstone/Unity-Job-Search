@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class StaticPlayerScript : MonoBehaviour
+public class JobFairScript : MonoBehaviour
 {
     public Vector2 joystick;
     public float speed;

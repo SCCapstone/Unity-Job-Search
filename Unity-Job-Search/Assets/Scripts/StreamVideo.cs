@@ -18,7 +18,7 @@ public class StreamVideo : MonoBehaviour {
         video.Prepare();
         while (!video.isPrepared)
         {
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1.2f);
             break;
         }
         rawImage.texture = video.texture;

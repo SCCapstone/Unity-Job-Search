@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 235741969}
   - component: {fileID: 235741968}
   m_Layer: 0
-  m_Name: CCBacktoFront
+  m_Name: CCBackToFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

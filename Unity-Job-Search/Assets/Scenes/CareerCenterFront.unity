@@ -632,6 +632,9 @@ MonoBehaviour:
   insideToFrontDesk: {fileID: 0}
   frontDeskToInside: {fileID: 0}
   frontDeskGO: {fileID: 0}
+  ccFrontToBack: {fileID: 1811622301}
+  ccFrontToDorm: {fileID: 299456749}
+  ccBackToFront: {fileID: 0}
 --- !u!136 &1254007211
 CapsuleCollider:
   m_ObjectHideFlags: 0

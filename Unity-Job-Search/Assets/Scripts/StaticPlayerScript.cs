@@ -48,7 +48,7 @@ public class StaticPlayerScript : MonoBehaviour
 
     void HandleGyroController()
     {
-        oculusGoRemote.transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTrackedRemote);
+        //oculusGoRemote.transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTrackedRemote);
 
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
@@ -111,7 +111,7 @@ public class StaticPlayerScript : MonoBehaviour
             if (hit.collider.gameObject.name == "CCFrontToBack")
             {
                 //Door.GetComponent<DoorBehavior>().displayText();
-                frontDeskToInside.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
+                ccFrontToBack.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
                 if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) == 1)
                 {
                     //DisplayText.text = "Opened Door";
@@ -121,7 +121,7 @@ public class StaticPlayerScript : MonoBehaviour
             if (hit.collider.gameObject.name == "CCFrontToDorm")
             {
                 //Door.GetComponent<DoorBehavior>().displayText();
-                frontDeskToInside.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
+                ccFrontToDorm.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
                 if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) == 1)
                 {
                     //DisplayText.text = "Opened Door";
@@ -131,7 +131,7 @@ public class StaticPlayerScript : MonoBehaviour
             if (hit.collider.gameObject.name == "CCBackToFront")
             {
                 //Door.GetComponent<DoorBehavior>().displayText();
-                frontDeskToInside.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
+                ccBackToFront.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
                 if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) == 1)
                 {
                     //DisplayText.text = "Opened Door";
