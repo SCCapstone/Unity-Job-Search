@@ -17,6 +17,9 @@ public class StaticPlayerScript : MonoBehaviour
     public GameObject insideToFrontDesk;
     public GameObject frontDeskToInside;
     public GameObject frontDeskGO;
+    public GameObject ccFrontToBack;
+    public GameObject ccFrontToDorm;
+    public GameObject ccBackToFront;
     //public Text DisplayText;
     //public GameObject Door;
 
@@ -45,7 +48,7 @@ public class StaticPlayerScript : MonoBehaviour
 
     void HandleGyroController()
     {
-        oculusGoRemote.transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTrackedRemote);
+        //oculusGoRemote.transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTrackedRemote);
 
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
@@ -103,6 +106,40 @@ public class StaticPlayerScript : MonoBehaviour
                     SceneManager.LoadScene("Inside_Front_Entrance");
                 }
             }
+            //**************************************************************
+
+            if (hit.collider.gameObject.name == "CCFrontToBack")
+            {
+                //Door.GetComponent<DoorBehavior>().displayText();
+                ccFrontToBack.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
+                if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) == 1)
+                {
+                    //DisplayText.text = "Opened Door";
+                    SceneManager.LoadScene("CareerCenterBack");
+                }
+            }
+            if (hit.collider.gameObject.name == "CCFrontToDorm")
+            {
+                //Door.GetComponent<DoorBehavior>().displayText();
+                ccFrontToDorm.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
+                if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) == 1)
+                {
+                    //DisplayText.text = "Opened Door";
+                    SceneManager.LoadScene("Dorm");
+                }
+            }
+            if (hit.collider.gameObject.name == "CCBackToFront")
+            {
+                //Door.GetComponent<DoorBehavior>().displayText();
+                ccBackToFront.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
+                if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) == 1)
+                {
+                    //DisplayText.text = "Opened Door";
+                    SceneManager.LoadScene("CareerCenterFront");
+                }
+            }
+
+
             if (hit.collider.gameObject.name == "frontDeskGO")
             {
                 //Door.GetComponent<DoorBehavior>().displayText();
