@@ -52,7 +52,6 @@ public class PlayerScript : MonoBehaviour
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(oculusGoRemote.transform.position, oculusGoRemote.transform.forward, out hit))
         {
-            //Debug.Log(hit.collider.gameObject.name);
 
             if (hit.collider.gameObject.name == "door")
             {
