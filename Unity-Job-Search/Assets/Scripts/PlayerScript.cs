@@ -27,6 +27,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject videoPlayer;
     public StreamVideo Play;
     public GameObject handShake_exit;
+    public GameObject handshake_btn;
 
     void Start()
     {
@@ -99,11 +100,26 @@ public class PlayerScript : MonoBehaviour
             {
                 if(OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
-                    Play.PlayPause();
-                    myCanvas.enabled = true;
                     //Play.PlayPause();
+                    myCanvas.enabled = true;
+                    myCanvas.GetComponent<LaptopMenu>().openLaptopMenu();
                     
                 }
+            }
+            if(hit.collider.gameObject.name == "handshake_btn")
+            {
+
+                if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    handshake_btn.GetComponent<VRButtonBehavior>().changeColor();
+                    myCanvas.GetComponent<LaptopMenu>().closeLaptopMenu();
+                    Play.PlayPause();
+                }
+                else
+                {
+                    handshake_btn.GetComponent<VRButtonBehavior>().resetColor();
+                }
+                
             }
             if ((hit.collider.gameObject.name == "handShake_exit" && OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) == true) || OVRInput.Get(OVRInput.Button.Back) == true)
             {
