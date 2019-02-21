@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
-public class StreamVideo : MonoBehaviour {
+public class StreamVideo : MonoBehaviour
+{
 
     public RawImage rawImage;
     public VideoPlayer video;
@@ -12,26 +13,39 @@ public class StreamVideo : MonoBehaviour {
     private bool isPaused = false;
     private bool firstRun = true;
 
-	
-	public IEnumerator PlayVideo()
+
+    public IEnumerator prepareVideo()
     {
         video.Prepare();
         while (!video.isPrepared)
         {
-            yield return new WaitForSeconds(1.2f);
+            yield return new WaitForSeconds(1);
             break;
         }
-        rawImage.texture = video.texture;
 
+    }
+    public void playVideo()
+    {
+
+        rawImage.texture = video.texture;
+        video.Play();
+        audio.Play();
+    }
+
+    public bool isReady()
+    {
         if (video.isPrepared)
         {
-            video.Play();
-            audio.Play();
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
     public void PlayPause()
     {
-       
-            StartCoroutine(PlayVideo());
+
+        StartCoroutine(prepareVideo());
     }
 }
