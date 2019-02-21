@@ -1168,7 +1168,7 @@ GameObject:
   - component: {fileID: 609493658}
   - component: {fileID: 609493661}
   m_Layer: 5
-  m_Name: handShake_exit
+  m_Name: menu_exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1394,7 +1394,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 749691362}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 21}
+  m_LocalPosition: {x: 0, y: 0, z: 58.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1974058442}
@@ -5547,7 +5547,7 @@ MonoBehaviour:
   laptop: {fileID: 1141811366}
   videoPlayer: {fileID: 2099026676}
   Play: {fileID: 2099026680}
-  handShake_exit: {fileID: 609493656}
+  menu_exit: {fileID: 609493656}
   handshake_btn: {fileID: 2136418674}
 --- !u!1 &2073667865
 GameObject:
@@ -5886,7 +5886,7 @@ GameObject:
   - component: {fileID: 2099026679}
   - component: {fileID: 2099026680}
   m_Layer: 0
-  m_Name: Video Player
+  m_Name: handshakeVideo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6107,7 +6107,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 40, y: 5, z: 7}
+  m_Size: {x: 40, y: 6, z: 7}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2136418678
 MonoBehaviour:

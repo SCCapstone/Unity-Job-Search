@@ -26,13 +26,13 @@ public class PlayerScript : MonoBehaviour
     public GameObject laptop;
     public GameObject videoPlayer;
     public StreamVideo Play;
-    public GameObject handShake_exit;
+    public GameObject menu_exit;
     public GameObject handshake_btn;
 
     void Start()
     {
         myCanvas.enabled = false;
-        
+        myCanvas.GetComponent<LaptopMenu>().closeLaptopMenu();
     }
 
     void HandlePlayerMovement()
@@ -108,12 +108,15 @@ public class PlayerScript : MonoBehaviour
             }
             if(hit.collider.gameObject.name == "handshake_btn")
             {
-
+                Play.PlayPause();
                 if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) == true)
-                {
-                    handshake_btn.GetComponent<VRButtonBehavior>().changeColor();
-                    myCanvas.GetComponent<LaptopMenu>().closeLaptopMenu();
-                    Play.PlayPause();
+                { 
+                    if (Play.isReady() == true)
+                    {
+                        handshake_btn.GetComponent<VRButtonBehavior>().changeColor();
+                        myCanvas.GetComponent<LaptopMenu>().closeLaptopMenu();
+                        Play.playVideo();
+                    }
                 }
                 else
                 {
@@ -121,7 +124,7 @@ public class PlayerScript : MonoBehaviour
                 }
                 
             }
-            if ((hit.collider.gameObject.name == "handShake_exit" && OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) == true) || OVRInput.Get(OVRInput.Button.Back) == true)
+            if ((hit.collider.gameObject.name == "menu_exit" && OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) == true) || OVRInput.Get(OVRInput.Button.Back) == true)
             {
                 
                 myCanvas.enabled = false;
