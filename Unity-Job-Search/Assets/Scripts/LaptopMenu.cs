@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class LaptopMenu : MonoBehaviour
 {
-    public GameObject Menu;
+    public GameObject Menu; // This it the Main Laptop Menu
+    public GameObject Menu2; // This is the Resume Menu
     public Text menuText;
     //public AudioSource openAduio;
 
@@ -27,8 +28,17 @@ public class LaptopMenu : MonoBehaviour
         Menu.SetActive(true);
         //openAduio.Play(0);
     }
+    public void openResumeMenu()
+    {
+        Menu2.SetActive(true);
+        //openAduio.Play(0);
+    }
     public void closeLaptopMenu()
     {
         Menu.SetActive(false);
+    }
+    public void closeResumeMenu()
+    {
+        Menu2.SetActive(false);
     }
 }
