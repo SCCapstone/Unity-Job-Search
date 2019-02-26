@@ -22,17 +22,29 @@ public class PlayerScript : MonoBehaviour
 
     //public GameObject ResumeButton;
 
-    public Canvas myCanvas;
+    public Canvas myCanvas; // This is MAIN MENU WHEN YOU HIT LAPTOP
+
     public GameObject laptop;
     public GameObject videoPlayer;
-    public StreamVideo Play;
+    public StreamVideo handshakePlay;
+    public StreamVideo resumePlay;
     public GameObject menu_exit;
     public GameObject handshake_btn;
+    public GameObject resume_btn;
+    public GameObject play_resumevid;
+    public GameObject example1;
+    public GameObject example2;
+
+    public Image img1, img2; // Images for the Examples
+
 
     void Start()
     {
         myCanvas.enabled = false;
         myCanvas.GetComponent<LaptopMenu>().closeLaptopMenu();
+        myCanvas.GetComponent<LaptopMenu>().closeResumeMenu();
+        img1.enabled = false;
+        img2.enabled = false;
     }
 
     void HandlePlayerMovement()
@@ -59,7 +71,7 @@ public class PlayerScript : MonoBehaviour
                 Door.GetComponent<DoorBehavior>().displayText();
                 CareerCenterButton.GetComponent<VRButtonBehavior>().resetColor();
                 FairButton.GetComponent<VRButtonBehavior>().resetColor();
-                if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) == true)
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     //DisplayText.text = "Opened Door";
                     Door.GetComponent<DoorBehavior>().openDoorMenu();
@@ -70,7 +82,7 @@ public class PlayerScript : MonoBehaviour
             {
                 FairButton.GetComponent<VRButtonBehavior>().resetColor();
                 CareerCenterButton.GetComponent<VRButtonBehavior>().changeColor();
-                if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) == true)
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     DisplayText.text = "Button Touched";
                     SceneManager.LoadScene("Outside_Front");
@@ -83,7 +95,7 @@ public class PlayerScript : MonoBehaviour
                 CareerCenterButton.GetComponent<VRButtonBehavior>().resetColor();
                 FairButton.GetComponent<VRButtonBehavior>().changeColor();
 
-                if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) == true)
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     DisplayText.text = "Button Touched";
                     SceneManager.LoadScene("CareerCenterFront");
@@ -98,7 +110,7 @@ public class PlayerScript : MonoBehaviour
 
             if(hit.collider.gameObject.name == "laptop")
             {
-                if(OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) == true)
+                if(OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     //Play.PlayPause();
                     myCanvas.enabled = true;
@@ -108,27 +120,86 @@ public class PlayerScript : MonoBehaviour
             }
             if(hit.collider.gameObject.name == "handshake_btn")
             {
-                Play.PlayPause();
-                if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) == true)
+                handshakePlay.PlayPause();
+                handshake_btn.GetComponent<VRButtonBehavior>().changeColor();
+                resume_btn.GetComponent<VRButtonBehavior>().resetColor();
+                
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 { 
-                    if (Play.isReady() == true)
+                    if (handshakePlay.isReady() == true)
                     {
-                        handshake_btn.GetComponent<VRButtonBehavior>().changeColor();
+                        
                         myCanvas.GetComponent<LaptopMenu>().closeLaptopMenu();
-                        Play.playVideo();
+                        handshakePlay.playVideo();
                     }
                 }
-                else
-                {
-                    handshake_btn.GetComponent<VRButtonBehavior>().resetColor();
-                }
+
+                
                 
             }
+            if (hit.collider.gameObject.name == "resume_btn")
+            {
+
+                
+                resume_btn.GetComponent<VRButtonBehavior>().changeColor();
+                handshake_btn.GetComponent<VRButtonBehavior>().resetColor();
+
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    myCanvas.GetComponent<LaptopMenu>().closeLaptopMenu();
+                    myCanvas.GetComponent<LaptopMenu>().openResumeMenu();
+                   
+                }
+               
+            }
+
+            if(hit.collider.gameObject.name == "play_resumevid")
+            {
+                resumePlay.PlayPause();
+                play_resumevid.GetComponent<VRButtonBehavior>().changeColor();
+                example1.GetComponent<VRButtonBehavior>().resetColor();
+                example2.GetComponent<VRButtonBehavior>().resetColor();
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    
+                    if (resumePlay.isReady() == true)
+                    {
+                        myCanvas.GetComponent<LaptopMenu>().closeResumeMenu();
+                        resumePlay.playVideo();
+                    }
+                }
+            }
+            if (hit.collider.gameObject.name == "example1")
+            {
+                example1.GetComponent<VRButtonBehavior>().changeColor();
+                play_resumevid.GetComponent<VRButtonBehavior>().resetColor();
+                example2.GetComponent<VRButtonBehavior>().resetColor();
+            if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    myCanvas.GetComponent<LaptopMenu>().closeResumeMenu();
+                    img1.enabled = true;
+                }
+            }
+            if (hit.collider.gameObject.name == "example2")
+            {
+                example2.GetComponent<VRButtonBehavior>().changeColor();
+                play_resumevid.GetComponent<VRButtonBehavior>().resetColor();
+                example1.GetComponent<VRButtonBehavior>().resetColor();
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    myCanvas.GetComponent<LaptopMenu>().closeResumeMenu();
+                    img2.enabled = true;
+                }
+            }
+
             if ((hit.collider.gameObject.name == "menu_exit" && OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) == true) || OVRInput.Get(OVRInput.Button.Back) == true)
             {
                 
                 myCanvas.enabled = false;
-                Play.video.Stop();
+                handshakePlay.video.Stop();
+                resumePlay.video.Stop();
+                img1.enabled = false;
+                img2.enabled = false;
             }
 
 
