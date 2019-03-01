@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
-    public bool visited_jobfair = false;
+    public bool visited_jobfair;
     public AudioClip audioClip;
     public AudioSource audioSource;
 
@@ -50,6 +50,13 @@ public class PlayerScript : MonoBehaviour
         myCanvas.GetComponent<LaptopMenu>().closeResumeMenu();
         img1.enabled = false;
         img2.enabled = false;
+        if (visited_jobfair == true)
+        {
+            audioSource.clip = audioClip;
+            // audio source is a obj under the cameraRig (yes i drug it into the field in unity)
+            // audio clip is the "you got mail" and its drug into the untiy field for the script as well
+            audioSource.Play();
+        }
     }
 
     void HandlePlayerMovement()
@@ -121,7 +128,7 @@ public class PlayerScript : MonoBehaviour
 
                     if (visited_jobfair)
                     {
-
+                        //TODO: implement interview functionality
                     }
                     else
                     {
@@ -226,14 +233,5 @@ public class PlayerScript : MonoBehaviour
     {
         HandlePlayerMovement();
         HandleGyroController();
-
-        if(visited_jobfair == true) 
-        {
-           audioSource.clip = audioClip; 
-            // audio source is a obj under the cameraRig (yes i drug it into the field in unity)
-            // audio clip is the "you got mail" and its drug into the untiy field for the script as well
-           audioSource.Play();
-        }
-        
     }
 }

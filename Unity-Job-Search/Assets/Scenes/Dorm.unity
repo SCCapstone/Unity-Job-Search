@@ -1514,7 +1514,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 691448460}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.43527, y: 10.763536, z: 45.77977}
+  m_LocalPosition: {x: 18.56, y: 10.763536, z: 45.77977}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1673,6 +1673,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Menu: {fileID: 575412485}
   Menu2: {fileID: 1545491498}
+  InterviewText: {fileID: 0}
   menuText: {fileID: 0}
 --- !u!1 &756727890
 GameObject:
@@ -5441,7 +5442,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -5530,7 +5531,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1843910611}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 18.21, y: -0.33904108, z: 79.25}
+  m_LocalPosition: {x: 18.21, y: -0.095, z: 88.26}
   m_LocalScale: {x: 40, y: 2.739726, z: 40}
   m_Children: []
   m_Father: {fileID: 2041403522}
@@ -6026,7 +6027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 908a20acb9b4c6e478cedeb25c41fc64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visited_jobfair: 1
+  visited_jobfair: 0
   audioClip: {fileID: 8300000, guid: b466933c5127ba849950be417f39f3fa, type: 3}
   audioSource: {fileID: 1843910612}
   joystick: {x: 0, y: 0}
