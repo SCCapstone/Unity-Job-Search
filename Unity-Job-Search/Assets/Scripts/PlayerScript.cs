@@ -50,6 +50,7 @@ public class PlayerScript : MonoBehaviour
         myCanvas.GetComponent<LaptopMenu>().closeResumeMenu();
         img1.enabled = false;
         img2.enabled = false;
+
         if (visited_jobfair == true)
         {
             audioSource.clip = audioClip;

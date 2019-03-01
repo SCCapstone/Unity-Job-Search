@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class LaptopMenu : MonoBehaviour
 {
-    public GameObject Menu; // This it the Main Laptop Menu
-    public GameObject Menu2; // This is the Resume Menu
+    public GameObject Menu; 
+    public GameObject Menu2; 
     public Text menuText;
     //public AudioSource openAduio;
 
@@ -19,16 +19,6 @@ public class LaptopMenu : MonoBehaviour
     public void hideText()
     {
         menuText.text = "";
-
-    }
-
-    public void openInterview()
-    {
-
-    }
-
-    public void closeInterview()
-    {
 
     }
 
