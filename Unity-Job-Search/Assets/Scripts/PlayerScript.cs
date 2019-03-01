@@ -4,8 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
 public class PlayerScript : MonoBehaviour
 {
+    public bool visited_jobfair = false;
+    public AudioClip audioClip;
+    public AudioSource audioSource;
+
     public Vector2 joystick;
     public float speed;
     public GameObject centerEyeAnchor;
@@ -98,6 +103,7 @@ public class PlayerScript : MonoBehaviour
                 if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     DisplayText.text = "Button Touched";
+                    visited_jobfair = true;  //***This should trigger the laptop to get an email from an employer***
                     SceneManager.LoadScene("CareerCenterFront");
                 }
             }
@@ -112,10 +118,17 @@ public class PlayerScript : MonoBehaviour
             {
                 if(OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
-                    //Play.PlayPause();
-                    myCanvas.enabled = true;
-                    myCanvas.GetComponent<LaptopMenu>().openLaptopMenu();
-                    
+
+                    if (visited_jobfair)
+                    {
+
+                    }
+                    else
+                    {
+                        //Play.PlayPause();
+                        myCanvas.enabled = true;
+                        myCanvas.GetComponent<LaptopMenu>().openLaptopMenu();
+                    }
                 }
             }
             if(hit.collider.gameObject.name == "handshake_btn")
@@ -213,6 +226,14 @@ public class PlayerScript : MonoBehaviour
     {
         HandlePlayerMovement();
         HandleGyroController();
+
+        if(visited_jobfair == true) 
+        {
+           audioSource.clip = audioClip; 
+            // audio source is a obj under the cameraRig (yes i drug it into the field in unity)
+            // audio clip is the "you got mail" and its drug into the untiy field for the script as well
+           audioSource.Play();
+        }
         
     }
 }

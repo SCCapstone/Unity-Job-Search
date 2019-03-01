@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.51906943, g: 0.49505007, b: 0.4589308, a: 1}
+  m_IndirectSpecularColor: {r: 0.51887596, g: 0.49521172, b: 0.4586712, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -761,17 +761,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystick: {x: 0, y: 0}
   speed: 0
-  centerEyeAnchor: {fileID: 718019269}
-  cameraRig: {fileID: 1709404306}
-  oculusGoRemote: {fileID: 1480191204}
+  centerEyeAnchor: {fileID: 0}
+  cameraRig: {fileID: 0}
+  oculusGoRemote: {fileID: 0}
   outsideToInside: {fileID: 0}
   outsideToDorm: {fileID: 0}
   insideToOutside: {fileID: 0}
   insideToFrontDesk: {fileID: 0}
   frontDeskToInside: {fileID: 0}
   frontDeskGO: {fileID: 0}
-  ccFrontToBack: {fileID: 1811622301}
-  ccFrontToDorm: {fileID: 299456749}
+  ccFrontToBack: {fileID: 0}
+  ccFrontToDorm: {fileID: 0}
   ccBackToFront: {fileID: 0}
 --- !u!136 &1254007211
 CapsuleCollider:
@@ -807,8 +807,8 @@ MonoBehaviour:
   FixedSpeedSteps: 0
   HmdResetsY: 1
   HmdRotatesY: 1
-  GravityModifier: 0
-  useProfileData: 0
+  GravityModifier: 0.379
+  useProfileData: 1
   EnableLinearMovement: 1
   EnableRotation: 1
 --- !u!143 &1254007213
@@ -998,8 +998,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_modelGearVrController: {fileID: 0}
-  m_modelOculusGoController: {fileID: 1602737586}
-  m_controller: 33554432
+  m_modelOculusGoController: {fileID: 0}
+  m_controller: 0
 --- !u!4 &1480191207
 Transform:
   m_ObjectHideFlags: 0

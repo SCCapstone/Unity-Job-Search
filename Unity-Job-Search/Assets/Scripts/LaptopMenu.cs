@@ -22,6 +22,15 @@ public class LaptopMenu : MonoBehaviour
 
     }
 
+    public void openInterview()
+    {
+
+    }
+
+    public void closeInterview()
+    {
+
+    }
 
     public void openLaptopMenu()
     {
