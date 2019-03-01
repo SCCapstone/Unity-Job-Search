@@ -11,6 +11,8 @@ public class PlayerScript : MonoBehaviour
     public AudioClip audioClip;
     public AudioSource audioSource;
 
+    public GameObject InterviewCanvas;
+
     public Vector2 joystick;
     public float speed;
     public GameObject centerEyeAnchor;
