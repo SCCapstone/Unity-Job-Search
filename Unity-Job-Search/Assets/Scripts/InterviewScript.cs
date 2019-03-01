@@ -23,21 +23,27 @@ public class InterviewScript : MonoBehaviour {
 
     public GameObject InterviewCanvas;
 
-    //Do you have time for an interview? 
-    public GameObject acceptInterview;
-    public GameObject declineInterview; // jump to missionFailed.mp3
+    //Do you have time for an interview? Q1
+    //public GameObject acceptInterview;
+    //public GameObject declineInterview; // jump to missionFailed.mp3
+    public GameObject q1Options;
 
-    //How would you describe yourself?
-    public GameObject partyAnimal; // jump to missionFailed.mp3
-    public GameObject hardWorker;
 
-    //Whats your work ethic like?
-    public GameObject dedicated;
-    public GameObject procrastinate; // jump to missionFailed.mp3
+    //How would you describe yourself? Q2
+    //public GameObject partyAnimal; // jump to missionFailed.mp3
+    //public GameObject hardWorker;
+    public GameObject q2Options;
+
+
+    //Whats your work ethic like? Q3
+    //public GameObject dedicated;
+    //public GameObject procrastinate; // jump to missionFailed.mp3
+    public GameObject q3Options;
 
     //Would you be open to going through training first?
-    public GameObject yesToTraining;
-    public GameObject noToTraining; // jump to missionFailed.mp3
+    //public GameObject yesToTraining;
+    //public GameObject noToTraining; // jump to missionFailed.mp3
+    public GameObject q4Options;
 
     // audio not included yet, can probably include/play them here or somewhere else
 
