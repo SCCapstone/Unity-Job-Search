@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class PlayerScript : MonoBehaviour
 {
     public bool visited_jobfair;
-    //public AudioClip audioClip;
+
     public GameObject gotMail;
     public GameObject callBack;
     public GameObject marker;
@@ -49,25 +49,13 @@ public class PlayerScript : MonoBehaviour
     public GameObject q3;
     public GameObject q4;
 
-    // interview options
-    public GameObject q1good;
-    public GameObject q1bad;
-    public GameObject q2good;
-    public GameObject q2bad;
-    public GameObject q3good;
-    public GameObject q3bad;
-    public GameObject q4good;
-    public GameObject q4bad;
-
     public GameObject interviewGoodEnding;
     public GameObject interviewBadEnding;
 
-    // interview counters
-    int count = 0;
-    int good = 0;
-    int bad = 0;
 
     public Image img1, img2; // Images for the Examples
+
+    public GameObject musicPlayer;
 
 
     void Start()
@@ -77,6 +65,13 @@ public class PlayerScript : MonoBehaviour
         myCanvas.GetComponent<LaptopMenu>().closeResumeMenu();
         img1.enabled = false;
         img2.enabled = false;
+
+        q1.active = false;
+        q2.active = false;
+        q3.active = false;
+        q4.active = false;
+
+        musicPlayer.active = false;
 
         if (visited_jobfair == true)
         {
@@ -92,7 +87,6 @@ public class PlayerScript : MonoBehaviour
         transform.eulerAngles = new Vector3(0, centerEyeAnchor.transform.localEulerAngles.y, 0);
         transform.Translate(Vector3.forward * speed * joystick.y * Time.deltaTime);
         transform.Translate(Vector3.right * speed * joystick.x * Time.deltaTime);
-
         cameraRig.transform.position = Vector3.Lerp(cameraRig.transform.position, transform.position, 10f * Time.deltaTime);
     }
 
@@ -115,6 +109,7 @@ public class PlayerScript : MonoBehaviour
                     Door.GetComponent<DoorBehavior>().openDoorMenu();
                 }
             }
+
             // Career Center
             else if (hit.collider.gameObject.name == "CareerCenter_Button")
             {
@@ -146,101 +141,19 @@ public class PlayerScript : MonoBehaviour
                 Door.GetComponent<DoorBehavior>().hideText();
                 
             }
-
             if(hit.collider.gameObject.name == "laptop")
             {
                 if(OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
-
                     if (visited_jobfair)
                     {
+                        //start the interview process
                         marker.active = false;
-                        gotMail.active = false;
-                        
+                        gotMail.active = false;                       
                         q1.active = true;
-                        //if (hit.collider.gameObject.name == "YesOption")
-                        //{
-                        //    if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
-                        //    {
-                        //        q1.active = false;
-                        //        q2.active = true;
-                        //    }
-                        //}
-                        //if (hit.collider.gameObject.name == "NoOption")
-                        //{
-                        //    if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
-                        //    {
-
-                        //        q1.active = false;
-                        //        callBack.active = true;
-                        //    }
-                        //}
-
-                        //// Question 2
-
-                        //if (hit.collider.gameObject.name == "HardWorkerOption")
-                        //{
-                        //    if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
-                        //    {
-                        //        q2.active = false;
-                        //        q3.active = true;
-                        //    }
-                        //}
-                        //if (hit.collider.gameObject.name == "PartyAnimalOption")
-                        //{
-                        //    if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
-                        //    {
-                        //        q2.active = false;
-                        //        interviewBadEnding.active = true;
-                        //        visited_jobfair = false;
-                        //    }
-                        //}
-
-                        //// Question 3
-
-                        //if (hit.collider.gameObject.name == "DedicatedOption")
-                        //{
-                        //    if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
-                        //    {
-                        //        q3.active = false;
-                        //        q4.active = true;
-                        //    }
-                        //}
-                        //if (hit.collider.gameObject.name == "procrastinateOption")
-                        //{
-                        //    if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
-                        //    {
-                                
-                        //        q3.active = false;
-                        //        interviewBadEnding.active = true;
-                        //        visited_jobfair = false;
-                        //    }
-                        //}
-
-                        //// Question 4
-
-                        //if (hit.collider.gameObject.name == "YesToTraining")
-                        //{
-                        //    if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
-                        //    {
-                        //        interviewGoodEnding.active = true;
-                        //        visited_jobfair = false;
-                        //        q4.active = false;
-                        //    }
-                        //}
-                        //if (hit.collider.gameObject.name == "NoToTraining")
-                        //{
-                        //    if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
-                        //    {
-                        //        interviewBadEnding.active = true;
-                        //        visited_jobfair = false;
-                        //        q4.active = false;
-                        //    }
-                        //}
                     }
                     else
                     {
-                        //Play.PlayPause();
                         myCanvas.enabled = true;
                         myCanvas.GetComponent<LaptopMenu>().openLaptopMenu();
                     }
@@ -261,9 +174,6 @@ public class PlayerScript : MonoBehaviour
                         handshakePlay.playVideo();
                     }
                 }
-
-                
-                
             }
             if (hit.collider.gameObject.name == "resume_btn")
             {
@@ -328,6 +238,17 @@ public class PlayerScript : MonoBehaviour
                 resumePlay.video.Stop();
                 img1.enabled = false;
                 img2.enabled = false;
+            }
+
+            if (hit.collider.gameObject.name == "radio")
+            {
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    if (musicPlayer.active)
+                        musicPlayer.active = false;
+                    else if (!musicPlayer.active)
+                        musicPlayer.active = true;
+                }
             }
 
             // interview stuff /********************************************************************/
@@ -413,107 +334,6 @@ public class PlayerScript : MonoBehaviour
                     q4.active = false;
                 }
             }
-            // Question 1
-
-            //if (hit.collider.gameObject.name == "YesOption" && count == 0)
-            //{
-            //    if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
-            //    {
-            //        count++;
-            //        good++;
-            //        q1.active = false;
-            //        q2.active = true;
-            //    }
-            //}
-            //if (hit.collider.gameObject.name == "NoOption" && count == 0)
-            //{
-            //    if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
-            //    {
-            //        count++;
-            //        bad++;
-            //        q1.active = false;
-            //        q2.active = true;
-            //    }
-            //}
-
-            //// Question 2
-
-            //if (hit.collider.gameObject.name == "HardWorkerOption" && count == 1)
-            //{
-            //    if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
-            //    {
-            //        count++;
-            //        good++;
-            //        q2.active = false;
-            //        q3.active = true;
-            //    }
-            //}
-            //if (hit.collider.gameObject.name == "PartyAnimalOption" && count == 1)
-            //{
-            //    if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
-            //    {
-            //        count++;
-            //        bad++;
-            //        q2.active = false;
-            //        q3.active = true;
-            //    }
-            //}
-
-            //// Question 3
-
-            //if (hit.collider.gameObject.name == "DedicatedOption" && count == 2)
-            //{
-            //    if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
-            //    {
-            //        count++;
-            //        good++;
-            //        q3.active = false;
-            //        q4.active = true;
-            //    }
-            //}
-            //if (hit.collider.gameObject.name == "procrastinateOption" && count == 2)
-            //{
-            //    if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
-            //    {
-            //        count++;
-            //        bad++;
-            //        q3.active = false;
-            //        q4.active = true;
-            //    }
-            //}
-
-            //// Question 4
-
-            //if (hit.collider.gameObject.name == "YesToTraining" && count == 3)
-            //{
-            //    if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
-            //    {
-            //        good++;
-            //        if(good > bad)
-            //            interviewGoodEnding.active = true;
-            //        if (bad > good)
-            //            interviewBadEnding.active = true;
-            //        q4.active = false;
-            //    }
-            //}
-            //if (hit.collider.gameObject.name == "NoToTraining" && count == 3)
-            //{
-            //    if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
-            //    {
-            //        bad++;
-            //        if (good > bad)
-            //            interviewGoodEnding.active = true;
-            //        if (bad > good)
-            //            interviewBadEnding.active = true;
-            //        q4.active = false;
-            //    }
-            //}
-
-
-
-
-            //Debug.DrawLine(oculusGoRemote.transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.cyan);
-            //Debug.Log("Did Hit");
         }
     }
 
