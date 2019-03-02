@@ -72,7 +72,8 @@ public class PlayerScript : MonoBehaviour
         q4.active = false;
 
         musicPlayer.active = false;
-
+    
+        visited_jobfair = PlayerPrefs.GetInt("visited_jobfair") == 1 ? true : false;
         if (visited_jobfair == true)
         {
             marker.active = true;
@@ -132,6 +133,7 @@ public class PlayerScript : MonoBehaviour
                 {
                     DisplayText.text = "Button Touched";
                     visited_jobfair = true;  //***This should trigger the laptop to get an email from an employer***
+                    PlayerPrefs.SetInt("visited_jobfair", visited_jobfair ? 1 : 0);
                     SceneManager.LoadScene("CareerCenterFront");
                 }
             }
@@ -270,6 +272,8 @@ public class PlayerScript : MonoBehaviour
 
                     q1.active = false;
                     callBack.active = true;
+                    visited_jobfair = false;  //***This should trigger the laptop to get an email from an employer***
+                    PlayerPrefs.DeleteKey("visited_jobfair");
                 }
             }
 
@@ -290,6 +294,7 @@ public class PlayerScript : MonoBehaviour
                     q2.active = false;
                     interviewBadEnding.active = true;
                     visited_jobfair = false;
+                    PlayerPrefs.DeleteKey("visited_jobfair");
                 }
             }
 
@@ -311,6 +316,7 @@ public class PlayerScript : MonoBehaviour
                     q3.active = false;
                     interviewBadEnding.active = true;
                     visited_jobfair = false;
+                    PlayerPrefs.DeleteKey("visited_jobfair");
                 }
             }
 
@@ -322,6 +328,7 @@ public class PlayerScript : MonoBehaviour
                 {
                     interviewGoodEnding.active = true;
                     visited_jobfair = false;
+                    PlayerPrefs.DeleteKey("visited_jobfair");
                     q4.active = false;
                 }
             }
@@ -330,8 +337,9 @@ public class PlayerScript : MonoBehaviour
                 if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     interviewBadEnding.active = true;
-                    visited_jobfair = false;
                     q4.active = false;
+                    visited_jobfair = false;
+                    PlayerPrefs.DeleteKey("visited_jobfair");
                 }
             }
         }

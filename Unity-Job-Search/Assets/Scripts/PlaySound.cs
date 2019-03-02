@@ -7,12 +7,15 @@ public class PlaySound : MonoBehaviour {
     public AudioClip sound;
     public float Volume;
     AudioSource audio;
-    public bool playedAlready = false;
+    public bool playedAlready;
 
 	// Use this for initialization
 	void Start () {
         audio = GetComponent<AudioSource>();
-	}
+        playedAlready = false;
+        playedAlready = PlayerPrefs.GetInt(sound.name) == 1 ? true : false;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -20,6 +23,8 @@ public class PlaySound : MonoBehaviour {
         {
             audio.PlayOneShot(sound, Volume);
             playedAlready = true;
+            PlayerPrefs.SetInt(sound.name, playedAlready ? 1 : 0);
         }
+        
 	}
 }
