@@ -2883,6 +2883,7 @@ GameObject:
   - component: {fileID: 820365885}
   - component: {fileID: 820365884}
   - component: {fileID: 820365887}
+  - component: {fileID: 820365888}
   m_Layer: 0
   m_Name: cabinet
   m_TagString: Untagged
@@ -3046,6 +3047,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &820365888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 820365883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b34af3fd15be8c5469f53303bcea3cfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: b620bd06c6905d4438d280dd03e29408, type: 3}
+  Volume: 1
+  playedAlready: 0
 --- !u!1 &840970180
 GameObject:
   m_ObjectHideFlags: 0
@@ -9500,7 +9515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 908a20acb9b4c6e478cedeb25c41fc64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visited_jobfair: 1
+  visited_jobfair: 0
   gotMail: {fileID: 1843910611}
   callBack: {fileID: 183671096}
   marker: {fileID: 1942076753}

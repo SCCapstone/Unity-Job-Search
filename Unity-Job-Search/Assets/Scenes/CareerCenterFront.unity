@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.51887596, g: 0.49521172, b: 0.4586712, a: 1}
+  m_IndirectSpecularColor: {r: 0.51906943, g: 0.49505007, b: 0.4589308, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -761,17 +761,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystick: {x: 0, y: 0}
   speed: 0
-  centerEyeAnchor: {fileID: 0}
-  cameraRig: {fileID: 0}
-  oculusGoRemote: {fileID: 0}
+  centerEyeAnchor: {fileID: 718019269}
+  cameraRig: {fileID: 1709404306}
+  oculusGoRemote: {fileID: 1480191204}
   outsideToInside: {fileID: 0}
   outsideToDorm: {fileID: 0}
   insideToOutside: {fileID: 0}
   insideToFrontDesk: {fileID: 0}
   frontDeskToInside: {fileID: 0}
   frontDeskGO: {fileID: 0}
-  ccFrontToBack: {fileID: 0}
-  ccFrontToDorm: {fileID: 0}
+  ccFrontToBack: {fileID: 1811622301}
+  ccFrontToDorm: {fileID: 299456749}
   ccBackToFront: {fileID: 0}
 --- !u!136 &1254007211
 CapsuleCollider:
@@ -792,7 +792,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1254007209}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0950df82e7936c84983497630bde5b54, type: 3}
   m_Name: 

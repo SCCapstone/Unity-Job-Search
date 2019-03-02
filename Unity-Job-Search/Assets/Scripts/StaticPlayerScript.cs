@@ -60,7 +60,7 @@ public class StaticPlayerScript : MonoBehaviour
             {
                 //Door.GetComponent<DoorBehavior>().displayText();
                 outsideToInside.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
-                if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) == 1)
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     //DisplayText.text = "Opened Door";
                     SceneManager.LoadScene("Inside_Front_Entrance");
@@ -70,7 +70,7 @@ public class StaticPlayerScript : MonoBehaviour
             {
                 //Door.GetComponent<DoorBehavior>().displayText();
                 outsideToDorm.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
-                if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) == 1)
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     //DisplayText.text = "Opened Door";
                     SceneManager.LoadScene("Dorm");
@@ -80,7 +80,7 @@ public class StaticPlayerScript : MonoBehaviour
             {
                 //Door.GetComponent<DoorBehavior>().displayText();
                 insideToFrontDesk.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
-                if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) == 1)
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     //DisplayText.text = "Opened Door";
                     SceneManager.LoadScene("Inside_Front_Desk");
@@ -90,7 +90,7 @@ public class StaticPlayerScript : MonoBehaviour
             {
                 //Door.GetComponent<DoorBehavior>().displayText();
                 insideToOutside.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
-                if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) == 1)
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     //DisplayText.text = "Opened Door";
                     SceneManager.LoadScene("Outside_Front");
@@ -100,7 +100,7 @@ public class StaticPlayerScript : MonoBehaviour
             {
                 //Door.GetComponent<DoorBehavior>().displayText();
                 frontDeskToInside.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
-                if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) == 1)
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     //DisplayText.text = "Opened Door";
                     SceneManager.LoadScene("Inside_Front_Entrance");
@@ -112,7 +112,7 @@ public class StaticPlayerScript : MonoBehaviour
             {
                 //Door.GetComponent<DoorBehavior>().displayText();
                 ccFrontToBack.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
-                if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) == 1)
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     //DisplayText.text = "Opened Door";
                     SceneManager.LoadScene("CareerCenterBack");
@@ -122,7 +122,7 @@ public class StaticPlayerScript : MonoBehaviour
             {
                 //Door.GetComponent<DoorBehavior>().displayText();
                 ccFrontToDorm.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
-                if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) == 1)
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     //DisplayText.text = "Opened Door";
                     SceneManager.LoadScene("Dorm");
@@ -132,7 +132,7 @@ public class StaticPlayerScript : MonoBehaviour
             {
                 //Door.GetComponent<DoorBehavior>().displayText();
                 ccBackToFront.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
-                if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) == 1)
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     //DisplayText.text = "Opened Door";
                     SceneManager.LoadScene("CareerCenterFront");
@@ -144,7 +144,7 @@ public class StaticPlayerScript : MonoBehaviour
             {
                 //Door.GetComponent<DoorBehavior>().displayText();
                 frontDeskGO.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
-                if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) == 1)
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     //DisplayText.text = "Opened Door";
                     // TODO: add something when interacted with
