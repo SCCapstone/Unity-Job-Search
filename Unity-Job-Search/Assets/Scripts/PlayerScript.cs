@@ -4,8 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
 public class PlayerScript : MonoBehaviour
 {
+    public bool visited_jobfair;
+
+    public GameObject gotMail;
+    public GameObject callBack;
+    public GameObject marker;
+    public GameObject InterviewCanvas;
+
     public Vector2 joystick;
     public float speed;
     public GameObject centerEyeAnchor;
@@ -35,7 +43,19 @@ public class PlayerScript : MonoBehaviour
     public GameObject example1;
     public GameObject example2;
 
+    // interview questions
+    public GameObject q1;
+    public GameObject q2;
+    public GameObject q3;
+    public GameObject q4;
+
+    public GameObject interviewGoodEnding;
+    public GameObject interviewBadEnding;
+
+
     public Image img1, img2; // Images for the Examples
+
+    public GameObject musicPlayer;
 
 
     void Start()
@@ -45,6 +65,20 @@ public class PlayerScript : MonoBehaviour
         myCanvas.GetComponent<LaptopMenu>().closeResumeMenu();
         img1.enabled = false;
         img2.enabled = false;
+
+        q1.active = false;
+        q2.active = false;
+        q3.active = false;
+        q4.active = false;
+
+        musicPlayer.active = false;
+    
+        visited_jobfair = PlayerPrefs.GetInt("visited_jobfair") == 1 ? true : false;
+        if (visited_jobfair == true)
+        {
+            marker.active = true;
+            gotMail.active = true;
+        }
     }
 
     void HandlePlayerMovement()
@@ -54,7 +88,6 @@ public class PlayerScript : MonoBehaviour
         transform.eulerAngles = new Vector3(0, centerEyeAnchor.transform.localEulerAngles.y, 0);
         transform.Translate(Vector3.forward * speed * joystick.y * Time.deltaTime);
         transform.Translate(Vector3.right * speed * joystick.x * Time.deltaTime);
-
         cameraRig.transform.position = Vector3.Lerp(cameraRig.transform.position, transform.position, 10f * Time.deltaTime);
     }
 
@@ -77,6 +110,7 @@ public class PlayerScript : MonoBehaviour
                     Door.GetComponent<DoorBehavior>().openDoorMenu();
                 }
             }
+
             // Career Center
             else if (hit.collider.gameObject.name == "CareerCenter_Button")
             {
@@ -98,6 +132,8 @@ public class PlayerScript : MonoBehaviour
                 if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     DisplayText.text = "Button Touched";
+                    visited_jobfair = true;  //***This should trigger the laptop to get an email from an employer***
+                    PlayerPrefs.SetInt("visited_jobfair", visited_jobfair ? 1 : 0);
                     SceneManager.LoadScene("CareerCenterFront");
                 }
             }
@@ -107,15 +143,22 @@ public class PlayerScript : MonoBehaviour
                 Door.GetComponent<DoorBehavior>().hideText();
                 
             }
-
             if(hit.collider.gameObject.name == "laptop")
             {
                 if(OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
-                    //Play.PlayPause();
-                    myCanvas.enabled = true;
-                    myCanvas.GetComponent<LaptopMenu>().openLaptopMenu();
-                    
+                    if (visited_jobfair)
+                    {
+                        //start the interview process
+                        marker.active = false;
+                        gotMail.active = false;                       
+                        q1.active = true;
+                    }
+                    else
+                    {
+                        myCanvas.enabled = true;
+                        myCanvas.GetComponent<LaptopMenu>().openLaptopMenu();
+                    }
                 }
             }
             if(hit.collider.gameObject.name == "handshake_btn")
@@ -133,9 +176,6 @@ public class PlayerScript : MonoBehaviour
                         handshakePlay.playVideo();
                     }
                 }
-
-                
-                
             }
             if (hit.collider.gameObject.name == "resume_btn")
             {
@@ -202,10 +242,106 @@ public class PlayerScript : MonoBehaviour
                 img2.enabled = false;
             }
 
+            if (hit.collider.gameObject.name == "radio")
+            {
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    if (musicPlayer.active)
+                        musicPlayer.active = false;
+                    else if (!musicPlayer.active)
+                        musicPlayer.active = true;
+                }
+            }
 
+            // interview stuff /********************************************************************/
+            /***************************************************************************************/
 
-            //Debug.DrawLine(oculusGoRemote.transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.cyan);
-            //Debug.Log("Did Hit");
+            // Question 1
+            if (hit.collider.gameObject.name == "YesOption")
+            {
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    q1.active = false;
+                    q2.active = true;
+                }
+            }
+            if (hit.collider.gameObject.name == "NoOption")
+            {
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+
+                    q1.active = false;
+                    callBack.active = true;
+                    visited_jobfair = false;  //***This should trigger the laptop to get an email from an employer***
+                    PlayerPrefs.DeleteKey("visited_jobfair");
+                }
+            }
+
+            // Question 2
+
+            if (hit.collider.gameObject.name == "HardWorkerOption")
+            {
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    q2.active = false;
+                    q3.active = true;
+                }
+            }
+            if (hit.collider.gameObject.name == "PartyAnimalOption")
+            {
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    q2.active = false;
+                    interviewBadEnding.active = true;
+                    visited_jobfair = false;
+                    PlayerPrefs.DeleteKey("visited_jobfair");
+                }
+            }
+
+            // Question 3
+
+            if (hit.collider.gameObject.name == "DedicatedOption")
+            {
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    q3.active = false;
+                    q4.active = true;
+                }
+            }
+            if (hit.collider.gameObject.name == "procrastinateOption")
+            {
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+
+                    q3.active = false;
+                    interviewBadEnding.active = true;
+                    visited_jobfair = false;
+                    PlayerPrefs.DeleteKey("visited_jobfair");
+                }
+            }
+
+            // Question 4
+
+            if (hit.collider.gameObject.name == "YesToTraining")
+            {
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    interviewGoodEnding.active = true;
+                    visited_jobfair = false;
+                    PlayerPrefs.DeleteKey("visited_jobfair");
+                    q4.active = false;
+                }
+            }
+            if (hit.collider.gameObject.name == "NoToTraining")
+            {
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    interviewBadEnding.active = true;
+                    q4.active = false;
+                    visited_jobfair = false;
+                    PlayerPrefs.DeleteKey("visited_jobfair");
+                }
+            }
         }
     }
 
@@ -213,6 +349,5 @@ public class PlayerScript : MonoBehaviour
     {
         HandlePlayerMovement();
         HandleGyroController();
-        
     }
 }

@@ -792,7 +792,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1254007209}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0950df82e7936c84983497630bde5b54, type: 3}
   m_Name: 
@@ -807,8 +807,8 @@ MonoBehaviour:
   FixedSpeedSteps: 0
   HmdResetsY: 1
   HmdRotatesY: 1
-  GravityModifier: 0
-  useProfileData: 0
+  GravityModifier: 0.379
+  useProfileData: 1
   EnableLinearMovement: 1
   EnableRotation: 1
 --- !u!143 &1254007213
@@ -998,8 +998,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_modelGearVrController: {fileID: 0}
-  m_modelOculusGoController: {fileID: 1602737586}
-  m_controller: 33554432
+  m_modelOculusGoController: {fileID: 0}
+  m_controller: 0
 --- !u!4 &1480191207
 Transform:
   m_ObjectHideFlags: 0
