@@ -42,6 +42,30 @@ public class PlayerScript : MonoBehaviour
     public GameObject example1;
     public GameObject example2;
 
+    // interview questions
+    public GameObject q1;
+    public GameObject q2;
+    public GameObject q3;
+    public GameObject q4;
+
+    // interview options
+    public GameObject q1good;
+    public GameObject q1bad;
+    public GameObject q2good;
+    public GameObject q2bad;
+    public GameObject q3good;
+    public GameObject q3bad;
+    public GameObject q4good;
+    public GameObject q4bad;
+
+    public GameObject interviewGoodEnding;
+    public GameObject interviewBadEnding;
+
+    // interview counters
+    int count = 0;
+    int good = 0;
+    int bad = 0;
+
     public Image img1, img2; // Images for the Examples
 
 
@@ -224,6 +248,106 @@ public class PlayerScript : MonoBehaviour
                 img1.enabled = false;
                 img2.enabled = false;
             }
+
+            // interview stuff /********************************************************************/
+            /***************************************************************************************/
+
+            // Question 1
+
+            if (hit.collider.gameObject.name == "YesOption" && count == 0)
+            {
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    count++;
+                    good++;
+                    q1.active = false;
+                    q2.active = true;
+                }
+            }
+            if (hit.collider.gameObject.name == "NoOption" && count == 0)
+            {
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    count++;
+                    bad++;
+                    q1.active = false;
+                    q2.active = true;
+                }
+            }
+
+            // Question 2
+
+            if (hit.collider.gameObject.name == "HardWorkerOption" && count == 1)
+            {
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    count++;
+                    good++;
+                    q2.active = false;
+                    q3.active = true;
+                }
+            }
+            if (hit.collider.gameObject.name == "PartyAnimalOption" && count == 1)
+            {
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    count++;
+                    bad++;
+                    q2.active = false;
+                    q3.active = true;
+                }
+            }
+
+            // Question 3
+
+            if (hit.collider.gameObject.name == "DedicatedOption" && count == 2)
+            {
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    count++;
+                    good++;
+                    q3.active = false;
+                    q4.active = true;
+                }
+            }
+            if (hit.collider.gameObject.name == "procrastinateOption" && count == 2)
+            {
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    count++;
+                    bad++;
+                    q3.active = false;
+                    q4.active = true;
+                }
+            }
+
+            // Question 4
+
+            if (hit.collider.gameObject.name == "YesToTraining" && count == 3)
+            {
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    good++;
+                    if(good > bad)
+                        interviewGoodEnding.active = true;
+                    if (bad > good)
+                        interviewBadEnding.active = true;
+                    q4.active = false;
+                }
+            }
+            if (hit.collider.gameObject.name == "NoToTraining" && count == 3)
+            {
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    bad++;
+                    if (good > bad)
+                        interviewGoodEnding.active = true;
+                    if (bad > good)
+                        interviewBadEnding.active = true;
+                    q4.active = false;
+                }
+            }
+
 
 
 
