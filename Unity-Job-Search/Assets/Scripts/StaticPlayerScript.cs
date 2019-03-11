@@ -20,6 +20,13 @@ public class StaticPlayerScript : MonoBehaviour
     public GameObject ccFrontToBack;
     public GameObject ccFrontToDorm;
     public GameObject ccBackToFront;
+    public GameObject helpDeskText;
+    public GameObject helpDeskTextbg;
+    public GameObject dressTipText;
+    public GameObject dressTipTextbg;
+    public GameObject talkingTipText;
+    public GameObject talkingTipTextbg;
+
     //public Text DisplayText;
     //public GameObject Door;
 
@@ -176,10 +183,46 @@ public class StaticPlayerScript : MonoBehaviour
         }
     }
 
+    void HoverTips()
+    {
+        RaycastHit hit;
+        //If the pointer hovers over the Tip icons, it will display text, and remove it when they point away
+        if (Physics.Raycast(oculusGoRemote.transform.position, oculusGoRemote.transform.forward, out hit))
+        {
+            if (hit.collider.gameObject.name == "HelpDesk")
+            {
+                helpDeskText.SetActive(true);
+                helpDeskTextbg.SetActive(true);
+            }
+
+            if (hit.collider.gameObject.name == "dressTip")
+            {
+                dressTipText.SetActive(true);
+                dressTipTextbg.SetActive(true);
+            }
+
+            if (hit.collider.gameObject.name == "dressTip")
+            {
+                talkingTipText.SetActive(true);
+                talkingTipTextbg.SetActive(true);
+            }
+
+            else
+            {
+                helpDeskText.SetActive(false);
+                helpDeskTextbg.SetActive(false);
+                dressTipText.SetActive(false);
+                dressTipTextbg.SetActive(false);
+                talkingTipText.SetActive(false);
+                talkingTipTextbg.SetActive(false);
+            }
+        }
+    }
+
     void Update()
     {
         //HandlePlayerMovement();
         HandleGyroController();
-
+        HoverTips();
     }
 }
