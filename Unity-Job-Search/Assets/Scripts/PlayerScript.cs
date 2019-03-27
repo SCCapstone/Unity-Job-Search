@@ -145,7 +145,8 @@ public class PlayerScript : MonoBehaviour
             }
             if(hit.collider.gameObject.name == "laptop")
             {
-                if(OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+ 
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     if (visited_jobfair)
                     {
@@ -153,11 +154,12 @@ public class PlayerScript : MonoBehaviour
                         marker.active = false;
                         gotMail.active = false;                       
                         q1.active = true;
+                        PlayerPrefs.DeleteKey("visited_jobfair");
                     }
                     else
                     {
                         myCanvas.enabled = true;
-                        myCanvas.GetComponent<LaptopMenu>().openLaptopMenu();
+                        myCanvas.GetComponent<LaptopMenu>().openLaptopMenu(); // handshake
                     }
                 }
             }
@@ -236,6 +238,8 @@ public class PlayerScript : MonoBehaviour
             {
                 
                 myCanvas.enabled = false;
+                myCanvas.GetComponent<LaptopMenu>().closeResumeMenu();
+                myCanvas.GetComponent<LaptopMenu>().closeLaptopMenu();
                 handshakePlay.video.Stop();
                 resumePlay.video.Stop();
                 img1.enabled = false;
