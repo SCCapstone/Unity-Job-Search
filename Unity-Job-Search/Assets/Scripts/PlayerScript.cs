@@ -42,7 +42,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject play_resumevid;
     public GameObject example1;
     public GameObject example2;
-
+    public GameObject rawImage;
     // interview questions
     public GameObject q1;
     public GameObject q2;
@@ -88,7 +88,7 @@ public class PlayerScript : MonoBehaviour
         transform.eulerAngles = new Vector3(0, centerEyeAnchor.transform.localEulerAngles.y, 0);
         transform.Translate(Vector3.forward * speed * joystick.y * Time.deltaTime);
         transform.Translate(Vector3.right * speed * joystick.x * Time.deltaTime);
-        cameraRig.transform.position = Vector3.Lerp(cameraRig.transform.position, transform.position, 10f * Time.deltaTime);
+        //cameraRig.transform.position = Vector3.Lerp(cameraRig.transform.position, transform.position, 10f * Time.deltaTime);
     }
 
     void HandleGyroController()
@@ -118,7 +118,7 @@ public class PlayerScript : MonoBehaviour
                 CareerCenterButton.GetComponent<VRButtonBehavior>().changeColor();
                 if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
-                    DisplayText.text = "Button Touched";
+                    //DisplayText.text = "Button Touched";
                     SceneManager.LoadScene("Outside_Front");
                 }
             }
@@ -131,7 +131,7 @@ public class PlayerScript : MonoBehaviour
 
                 if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
-                    DisplayText.text = "Button Touched";
+                    //DisplayText.text = "Button Touched";
                     visited_jobfair = true;  //***This should trigger the laptop to get an email from an employer***
                     PlayerPrefs.SetInt("visited_jobfair", visited_jobfair ? 1 : 0);
                     SceneManager.LoadScene("CareerCenterFront");
@@ -143,9 +143,9 @@ public class PlayerScript : MonoBehaviour
                 Door.GetComponent<DoorBehavior>().hideText();
                 
             }
-            if(hit.collider.gameObject.name == "laptop")
+            if(hit.collider.gameObject.name == "Computer")
             {
- 
+                
                 if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     if (visited_jobfair)
@@ -160,6 +160,7 @@ public class PlayerScript : MonoBehaviour
                     {
                         myCanvas.enabled = true;
                         myCanvas.GetComponent<LaptopMenu>().openLaptopMenu(); // handshake
+                        laptop.GetComponent<BoxCollider>().enabled = false;
                     }
                 }
             }
@@ -185,7 +186,7 @@ public class PlayerScript : MonoBehaviour
                 
                 resume_btn.GetComponent<VRButtonBehavior>().changeColor();
                 handshake_btn.GetComponent<VRButtonBehavior>().resetColor();
-
+                
                 if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     myCanvas.GetComponent<LaptopMenu>().closeLaptopMenu();
@@ -220,6 +221,7 @@ public class PlayerScript : MonoBehaviour
                 {
                     myCanvas.GetComponent<LaptopMenu>().closeResumeMenu();
                     img1.enabled = true;
+                    rawImage.GetComponent<RawImage>().color = Color.black;
                 }
             }
             if (hit.collider.gameObject.name == "example2")
@@ -231,6 +233,7 @@ public class PlayerScript : MonoBehaviour
                 {
                     myCanvas.GetComponent<LaptopMenu>().closeResumeMenu();
                     img2.enabled = true;
+                    rawImage.GetComponent<RawImage>().color = Color.black;
                 }
             }
 
@@ -244,6 +247,8 @@ public class PlayerScript : MonoBehaviour
                 resumePlay.video.Stop();
                 img1.enabled = false;
                 img2.enabled = false;
+                laptop.GetComponent<BoxCollider>().enabled = true;
+                rawImage.GetComponent<RawImage>().color = Color.white;
             }
 
             if (hit.collider.gameObject.name == "radio")
