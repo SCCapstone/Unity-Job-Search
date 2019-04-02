@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5399526, g: 0.52355087, b: 0.5138484, a: 1}
+  m_IndirectSpecularColor: {r: 0.5399384, g: 0.5234717, b: 0.512959, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -429,7 +429,7 @@ GameObject:
   - component: {fileID: 588516066}
   - component: {fileID: 588516065}
   m_Layer: 5
-  m_Name: HelpDesk
+  m_Name: Tips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -445,7 +445,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 5, y: 10, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &588516066
 MeshRenderer:
@@ -858,12 +858,9 @@ MonoBehaviour:
   ccFrontToBack: {fileID: 0}
   ccFrontToDorm: {fileID: 0}
   ccBackToFront: {fileID: 0}
-  helpDeskText: {fileID: 2011740890}
-  helpDeskTextbg: {fileID: 954337146}
-  dressTipText: {fileID: 0}
-  dressTipTextbg: {fileID: 0}
-  talkingTipText: {fileID: 0}
-  talkingTipTextbg: {fileID: 0}
+  showText: {fileID: 2011740890}
+  Textbg: {fileID: 954337146}
+  TEST: {fileID: 0}
 --- !u!1 &1271045929
 GameObject:
   m_ObjectHideFlags: 0

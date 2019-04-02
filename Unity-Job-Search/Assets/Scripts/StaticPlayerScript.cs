@@ -20,13 +20,10 @@ public class StaticPlayerScript : MonoBehaviour
     public GameObject ccFrontToBack;
     public GameObject ccFrontToDorm;
     public GameObject ccBackToFront;
-    public GameObject helpDeskText;
-    public GameObject helpDeskTextbg;
-    public GameObject dressTipText;
-    public GameObject dressTipTextbg;
-    public GameObject talkingTipText;
-    public GameObject talkingTipTextbg;
+    public GameObject showText;
+    public GameObject Textbg;
 
+    public GameObject TEST;
     //public Text DisplayText;
     //public GameObject Door;
 
@@ -37,7 +34,8 @@ public class StaticPlayerScript : MonoBehaviour
     //GameObject FairButton;
 
 
-
+    
+    
     //public GameObject ResumeButton;
 
     /*
@@ -180,6 +178,19 @@ public class StaticPlayerScript : MonoBehaviour
             //Debug.DrawLine(oculusGoRemote.transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.cyan);
             //Debug.Log("Did Hit");
             */
+
+            // THIS IS THE HOVERABLE TIPS IN EACH SCENE DOWN HERE AND ITS FOR ALL THE SCENES
+            /*if (hit.collider.gameObject.name == "Tips")
+            {
+                showText.SetActive(true);
+                Textbg.SetActive(true);
+                Debug.Log("WTF");
+            }
+            else if(!(hit.collider.gameObject.name == "Tips"))
+            {
+                Debug.Log("FK");
+            }*/
+
         }
     }
 
@@ -189,33 +200,18 @@ public class StaticPlayerScript : MonoBehaviour
         //If the pointer hovers over the Tip icons, it will display text, and remove it when they point away
         if (Physics.Raycast(oculusGoRemote.transform.position, oculusGoRemote.transform.forward, out hit))
         {
-            if (hit.collider.gameObject.name == "HelpDesk")
+            if (hit.collider.gameObject.name == "Tips")
             {
-                helpDeskText.SetActive(true);
-                helpDeskTextbg.SetActive(true);
-            }
+                showText.SetActive(true);
+                Textbg.SetActive(true);
 
-            if (hit.collider.gameObject.name == "dressTip")
-            {
-                dressTipText.SetActive(true);
-                dressTipTextbg.SetActive(true);
             }
+            
+            showText.SetActive(false);
+            Textbg.SetActive(false);
+            Debug.Log("PRINTING HERE");
+                
 
-            if (hit.collider.gameObject.name == "dressTip")
-            {
-                talkingTipText.SetActive(true);
-                talkingTipTextbg.SetActive(true);
-            }
-
-            else
-            {
-                helpDeskText.SetActive(false);
-                helpDeskTextbg.SetActive(false);
-                dressTipText.SetActive(false);
-                dressTipTextbg.SetActive(false);
-                talkingTipText.SetActive(false);
-                talkingTipTextbg.SetActive(false);
-            }
         }
     }
 
@@ -224,5 +220,6 @@ public class StaticPlayerScript : MonoBehaviour
         //HandlePlayerMovement();
         HandleGyroController();
         HoverTips();
+        
     }
 }

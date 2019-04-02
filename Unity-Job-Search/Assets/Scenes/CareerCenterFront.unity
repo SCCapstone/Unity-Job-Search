@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.51887596, g: 0.49521172, b: 0.4586712, a: 1}
+  m_IndirectSpecularColor: {r: 0.51906943, g: 0.49505007, b: 0.4589308, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -955,12 +955,9 @@ MonoBehaviour:
   ccFrontToBack: {fileID: 1811622301}
   ccFrontToDorm: {fileID: 299456749}
   ccBackToFront: {fileID: 0}
-  helpDeskText: {fileID: 0}
-  helpDeskTextbg: {fileID: 0}
-  dressTipText: {fileID: 298297024}
-  dressTipTextbg: {fileID: 1536518970}
-  talkingTipText: {fileID: 0}
-  talkingTipTextbg: {fileID: 0}
+  showText: {fileID: 0}
+  Textbg: {fileID: 0}
+  TEST: {fileID: 0}
 --- !u!136 &1254007211
 CapsuleCollider:
   m_ObjectHideFlags: 0
