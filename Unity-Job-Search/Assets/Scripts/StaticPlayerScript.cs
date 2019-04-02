@@ -211,7 +211,7 @@ public class StaticPlayerScript : MonoBehaviour
                 showText.SetActive(false);
                 Textbg.SetActive(false);
             }
-            Debug.Log("YO");
+            
 
         }
        
