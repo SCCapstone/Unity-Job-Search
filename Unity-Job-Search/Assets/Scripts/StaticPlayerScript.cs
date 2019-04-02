@@ -20,6 +20,11 @@ public class StaticPlayerScript : MonoBehaviour
     public GameObject ccFrontToBack;
     public GameObject ccFrontToDorm;
     public GameObject ccBackToFront;
+    public GameObject showText;
+    public GameObject Textbg;
+
+    public GameObject TEST;
+    RaycastHit hit;
     //public Text DisplayText;
     //public GameObject Door;
 
@@ -28,6 +33,7 @@ public class StaticPlayerScript : MonoBehaviour
     //public GameObject InterviewButton;
 
     //GameObject FairButton;
+
 
 
 
@@ -50,12 +56,11 @@ public class StaticPlayerScript : MonoBehaviour
     {
         //oculusGoRemote.transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTrackedRemote);
 
-        RaycastHit hit;
+        
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(oculusGoRemote.transform.position, oculusGoRemote.transform.forward, out hit))
         {
             //Debug.Log(hit.collider.gameObject.name);
-
             if (hit.collider.gameObject.name == "outsideToInside")
             {
                 //Door.GetComponent<DoorBehavior>().displayText();
@@ -173,13 +178,50 @@ public class StaticPlayerScript : MonoBehaviour
             //Debug.DrawLine(oculusGoRemote.transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.cyan);
             //Debug.Log("Did Hit");
             */
+
+            // THIS IS THE HOVERABLE TIPS IN EACH SCENE DOWN HERE AND ITS FOR ALL THE SCENES
+            /*if (hit.collider.gameObject.name == "Tips")
+            {
+                showText.SetActive(true);
+                Textbg.SetActive(true);
+                Debug.Log("WTF");
+            }
+            else if(!(hit.collider.gameObject.name == "Tips"))
+            {
+                Debug.Log("FK");
+            }*/
+
         }
+    }
+
+    void HoverTips()
+    {
+        //If the pointer hovers over the Tip icons, it will display text, and remove it when they point away
+        
+        if (Physics.Raycast(oculusGoRemote.transform.position, oculusGoRemote.transform.forward, out hit))
+        {
+            if (hit.collider.gameObject.name == "Tips")
+            {
+                showText.SetActive(true);
+                Textbg.SetActive(true);
+
+            }
+            else
+            {
+                showText.SetActive(false);
+                Textbg.SetActive(false);
+            }
+            
+
+        }
+       
     }
 
     void Update()
     {
         //HandlePlayerMovement();
         HandleGyroController();
-
+        HoverTips();
+        
     }
 }
