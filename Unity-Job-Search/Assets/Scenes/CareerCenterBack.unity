@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5098733, g: 0.5019625, b: 0.48127925, a: 1}
+  m_IndirectSpecularColor: {r: 0.5089225, g: 0.501706, b: 0.48074996, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 401653248}
   - component: {fileID: 401653247}
   m_Layer: 5
-  m_Name: talkingTip
+  m_Name: Tips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1324,12 +1324,9 @@ MonoBehaviour:
   ccFrontToBack: {fileID: 0}
   ccFrontToDorm: {fileID: 0}
   ccBackToFront: {fileID: 235741967}
-  helpDeskText: {fileID: 0}
-  helpDeskTextbg: {fileID: 0}
-  dressTipText: {fileID: 0}
-  dressTipTextbg: {fileID: 0}
-  talkingTipText: {fileID: 1588264850}
-  talkingTipTextbg: {fileID: 2128747052}
+  showText: {fileID: 0}
+  Textbg: {fileID: 0}
+  TEST: {fileID: 0}
 --- !u!136 &1720001914
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -1074,7 +1074,7 @@ GameObject:
   - component: {fileID: 1467426926}
   - component: {fileID: 1467426925}
   m_Layer: 5
-  m_Name: dressTip
+  m_Name: Tips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
