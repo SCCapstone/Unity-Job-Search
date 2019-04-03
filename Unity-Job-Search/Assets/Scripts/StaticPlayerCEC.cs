@@ -60,7 +60,7 @@ public class StaticPlayerCEC : MonoBehaviour
         {
             //Debug.Log(hit.collider.gameObject.name);
 
-            if (hit.collider.gameObject.name == "outsideToDorm")
+            if (hit.collider.gameObject.name == "OutsideToDorm")
             {
                 //Door.GetComponent<DoorBehavior>().displayText();
                 outsideToDorm.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
@@ -91,7 +91,7 @@ public class StaticPlayerCEC : MonoBehaviour
                     SceneManager.LoadScene("CECOutsideFar");
                 }
             }
-            if (hit.collider.gameObject.name == "frontDoorToInside1")
+            if (hit.collider.gameObject.name == "FrontToInside1")
             {
                 //Door.GetComponent<DoorBehavior>().displayText();
                 frontDoorToInside1.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
@@ -101,7 +101,7 @@ public class StaticPlayerCEC : MonoBehaviour
                     SceneManager.LoadScene("CECInside1");
                 }
             }
-            if (hit.collider.gameObject.name == "inside1ToFrontDoor")
+            if (hit.collider.gameObject.name == "Inside1ToOutside")
             {
                 //Door.GetComponent<DoorBehavior>().displayText();
                 inside1ToFrontDoor.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
@@ -113,7 +113,7 @@ public class StaticPlayerCEC : MonoBehaviour
             }
             //**************************************************************
 
-            if (hit.collider.gameObject.name == "inside1ToInside2")
+            if (hit.collider.gameObject.name == "Inside1ToInside2")
             {
                 //Door.GetComponent<DoorBehavior>().displayText();
                 inside1ToInside2.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
@@ -123,7 +123,7 @@ public class StaticPlayerCEC : MonoBehaviour
                     SceneManager.LoadScene("CECInside2");
                 }
             }
-            if (hit.collider.gameObject.name == "inside2ToInside1")
+            if (hit.collider.gameObject.name == "Inside2ToInside1")
             {
                 //Door.GetComponent<DoorBehavior>().displayText();
                 inside2ToInside1.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
@@ -133,17 +133,17 @@ public class StaticPlayerCEC : MonoBehaviour
                     SceneManager.LoadScene("CECInside1");
                 }
             }
-            if (hit.collider.gameObject.name == "inside2ToInside3")
+            if (hit.collider.gameObject.name == "Inside2ToInside3")
             {
                 //Door.GetComponent<DoorBehavior>().displayText();
                 inside2ToInside3.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
                 if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     //DisplayText.text = "Opened Door";
-                    SceneManager.LoadScene("CECInside");
+                    SceneManager.LoadScene("CECInside3");
                 }
             }
-            if (hit.collider.gameObject.name == "inside3ToInside2")
+            if (hit.collider.gameObject.name == "Inside3ToInside2")
             {
                 //Door.GetComponent<DoorBehavior>().displayText();
                 inside3ToInside2.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
@@ -153,7 +153,7 @@ public class StaticPlayerCEC : MonoBehaviour
                     SceneManager.LoadScene("CECInside2");
                 }
             }
-            if (hit.collider.gameObject.name == "inside3ToInsideDoor")
+            if (hit.collider.gameObject.name == "Inside3ToInsideDoor")
             {
                 //Door.GetComponent<DoorBehavior>().displayText();
                 inside3ToInsideDoor.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
@@ -163,7 +163,7 @@ public class StaticPlayerCEC : MonoBehaviour
                     SceneManager.LoadScene("CECInsideDoor");
                 }
             }
-            if (hit.collider.gameObject.name == "insideDoorToInside3")
+            if (hit.collider.gameObject.name == "InsideDoorToInside3")
             {
                 //Door.GetComponent<DoorBehavior>().displayText();
                 insideDoorToInside3.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
@@ -173,7 +173,7 @@ public class StaticPlayerCEC : MonoBehaviour
                     SceneManager.LoadScene("CECInside3");
                 }
             }
-            if (hit.collider.gameObject.name == "insideDoorToOffice")
+            if (hit.collider.gameObject.name == "InsideDoorToOffice")
             {
                 //Door.GetComponent<DoorBehavior>().displayText();
                 insideDoorToOffice.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
@@ -183,7 +183,7 @@ public class StaticPlayerCEC : MonoBehaviour
                     SceneManager.LoadScene("CECOffice");
                 }
             }
-            if (hit.collider.gameObject.name == "officeToInsideDoor")
+            if (hit.collider.gameObject.name == "OfficeToInsideDoor")
             {
                 //Door.GetComponent<DoorBehavior>().displayText();
                 officeToInsideDoor.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
