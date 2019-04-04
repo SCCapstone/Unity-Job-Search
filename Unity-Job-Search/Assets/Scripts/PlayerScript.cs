@@ -251,7 +251,7 @@ public class PlayerScript : MonoBehaviour
                 rawImage.GetComponent<RawImage>().color = Color.white;
             }
 
-            if (hit.collider.gameObject.name == "radio")
+            if (hit.collider.gameObject.name == "Radio")
             {
                 if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
