@@ -24,7 +24,7 @@ public class PlayerScript : MonoBehaviour
 
     public GameObject CareerCenterButton;
 
-    public GameObject InterviewButton;
+    public GameObject Swearingen;
 
     public GameObject FairButton;
 
@@ -104,10 +104,14 @@ public class PlayerScript : MonoBehaviour
                 Door.GetComponent<DoorBehavior>().displayText();
                 CareerCenterButton.GetComponent<VRButtonBehavior>().resetColor();
                 FairButton.GetComponent<VRButtonBehavior>().resetColor();
+                Swearingen.GetComponent<VRButtonBehavior>().resetColor();
+               
+                
                 if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     //DisplayText.text = "Opened Door";
                     Door.GetComponent<DoorBehavior>().openDoorMenu();
+                    
                 }
             }
 
@@ -115,6 +119,7 @@ public class PlayerScript : MonoBehaviour
             else if (hit.collider.gameObject.name == "CareerCenter_Button")
             {
                 FairButton.GetComponent<VRButtonBehavior>().resetColor();
+                Swearingen.GetComponent<VRButtonBehavior>().resetColor();
                 CareerCenterButton.GetComponent<VRButtonBehavior>().changeColor();
                 if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
@@ -128,13 +133,25 @@ public class PlayerScript : MonoBehaviour
             {
                 CareerCenterButton.GetComponent<VRButtonBehavior>().resetColor();
                 FairButton.GetComponent<VRButtonBehavior>().changeColor();
-
+                Swearingen.GetComponent<VRButtonBehavior>().resetColor();
                 if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     //DisplayText.text = "Button Touched";
                     visited_jobfair = true;  //***This should trigger the laptop to get an email from an employer***
                     PlayerPrefs.SetInt("visited_jobfair", visited_jobfair ? 1 : 0);
                     SceneManager.LoadScene("CareerCenterFront");
+                }
+            }
+            else if (hit.collider.gameObject.name == "Swearingen")
+            {
+                CareerCenterButton.GetComponent<VRButtonBehavior>().resetColor();
+                FairButton.GetComponent<VRButtonBehavior>().resetColor();
+                Swearingen.GetComponent<VRButtonBehavior>().changeColor();
+
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                   // DisplayText.text = "Button Touched";
+                    SceneManager.LoadScene("Swearingen");
                 }
             }
             else
