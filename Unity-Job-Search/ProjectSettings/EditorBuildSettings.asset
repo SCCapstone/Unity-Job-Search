@@ -26,4 +26,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CareerCenterFront.unity
     guid: bc9a25095dcf95841ba7bc01fe02200a
+  - enabled: 1
+    path: Assets/Scenes/CECScenes/CECOutsideFar.unity
+    guid: 8f8682006796b68408c510ab53e84b93
+  - enabled: 1
+    path: Assets/Scenes/CECScenes/CECInside1.unity
+    guid: 296a921be5e071e43a44ecb94122f502
+  - enabled: 1
+    path: Assets/Scenes/CECScenes/CECInside2.unity
+    guid: 9dcb0b6eeafac1a46874108cc79fc112
+  - enabled: 1
+    path: Assets/Scenes/CECScenes/CECInside3.unity
+    guid: 5beef807b20d3e8498a54b2f1b2f79a1
+  - enabled: 1
+    path: Assets/Scenes/CECScenes/CECInsideDoor.unity
+    guid: 4c9a5895aceeafb448ef2c34711efb8c
+  - enabled: 1
+    path: Assets/Scenes/CECScenes/CECOffice.unity
+    guid: 6a017ac0f5b1cb14ca06664418b6bf9c
   m_configObjects: {}
