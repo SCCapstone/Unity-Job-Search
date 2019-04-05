@@ -108,7 +108,7 @@ public class StaticPlayerCEC : MonoBehaviour
                 if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     //DisplayText.text = "Opened Door";
-                    SceneManager.LoadScene("CECFrontDoor");
+                    SceneManager.LoadScene("CECOutsideFar");
                 }
             }
             //**************************************************************
