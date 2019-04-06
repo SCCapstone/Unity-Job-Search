@@ -48,7 +48,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject q2;
     public GameObject q3;
     public GameObject q4;
-
+    public AudioClip sound;
     public GameObject interviewGoodEnding;
     public GameObject interviewBadEnding;
 
@@ -60,6 +60,7 @@ public class PlayerScript : MonoBehaviour
 
     void Start()
     {
+        
         myCanvas.enabled = false;
         myCanvas.GetComponent<LaptopMenu>().closeLaptopMenu();
         myCanvas.GetComponent<LaptopMenu>().closeResumeMenu();
@@ -105,7 +106,9 @@ public class PlayerScript : MonoBehaviour
                 CareerCenterButton.GetComponent<VRButtonBehavior>().resetColor();
                 FairButton.GetComponent<VRButtonBehavior>().resetColor();
                 Swearingen.GetComponent<VRButtonBehavior>().resetColor();
-               
+
+                
+                
                 
                 if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {

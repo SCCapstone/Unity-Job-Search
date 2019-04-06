@@ -613,7 +613,6 @@ GameObject:
   - component: {fileID: 766097128}
   - component: {fileID: 766097123}
   - component: {fileID: 766097122}
-  - component: {fileID: 766097121}
   - component: {fileID: 766097124}
   - component: {fileID: 766097125}
   m_Layer: 0
@@ -623,32 +622,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &766097121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 766097120}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 908a20acb9b4c6e478cedeb25c41fc64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  joystick: {x: 0, y: 0}
-  speed: 5
-  centerEyeAnchor: {fileID: 0}
-  cameraRig: {fileID: 0}
-  oculusGoRemote: {fileID: 0}
-  DisplayText: {fileID: 0}
-  Door: {fileID: 0}
-  CareerCenterButton: {fileID: 0}
-  InterviewButton: {fileID: 0}
-  FairButton: {fileID: 0}
-  myCanvas: {fileID: 0}
-  laptop: {fileID: 0}
-  videoPlayer: {fileID: 0}
-  Play: {fileID: 0}
-  handShake_exit: {fileID: 0}
 --- !u!136 &766097122
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -702,6 +675,10 @@ MonoBehaviour:
   ccFrontToBack: {fileID: 0}
   ccFrontToDorm: {fileID: 0}
   ccBackToFront: {fileID: 0}
+  showText: {fileID: 0}
+  Textbg: {fileID: 0}
+  sound: {fileID: 8300000, guid: 0ffdc6833199bb046b908b7c6342e09d, type: 3}
+  TEST: {fileID: 0}
 --- !u!81 &766097125
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1161,7 +1138,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0ffdc6833199bb046b908b7c6342e09d, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1327,7 +1304,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 8300000, guid: 0ffdc6833199bb046b908b7c6342e09d, type: 3}
   Volume: 1
-  playedAlready: 0
+  audio: {fileID: 1808617704}
+  alreadyPlayed: 0
 --- !u!1 &1833138052
 GameObject:
   m_ObjectHideFlags: 0
