@@ -151,7 +151,7 @@ public class PlayerScript : MonoBehaviour
                 if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                    // DisplayText.text = "Button Touched";
-                    SceneManager.LoadScene("Swearingen");
+                    SceneManager.LoadScene("CECOutsideFar");
                 }
             }
             else
