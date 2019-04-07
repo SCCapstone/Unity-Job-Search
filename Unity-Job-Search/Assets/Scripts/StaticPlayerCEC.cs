@@ -24,6 +24,9 @@ public class StaticPlayerCEC : MonoBehaviour
     public GameObject insideDoorToInside3;
     public GameObject insideDoorToOffice;
     public GameObject officeToInsideDoor;
+    public GameObject showText;
+    public GameObject Textbg;
+    RaycastHit hit;
     //public Text DisplayText;
     //public GameObject Door;
 
@@ -54,7 +57,7 @@ public class StaticPlayerCEC : MonoBehaviour
     {
         //oculusGoRemote.transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTrackedRemote);
 
-        RaycastHit hit;
+        
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(oculusGoRemote.transform.position, oculusGoRemote.transform.forward, out hit))
         {
@@ -230,11 +233,32 @@ public class StaticPlayerCEC : MonoBehaviour
             */
         }
     }
+    void HoverTips()
+    {
+        //If the pointer hovers over the Tip icons, it will display text, and remove it when they point away
 
+        if (Physics.Raycast(oculusGoRemote.transform.position, oculusGoRemote.transform.forward, out hit))
+        {
+            if (hit.collider.gameObject.name == "Tips")
+            {
+                showText.SetActive(true);
+                Textbg.SetActive(true);
+
+            }
+            else
+            {
+                showText.SetActive(false);
+                Textbg.SetActive(false);
+            }
+
+
+        }
+
+    }
     void Update()
     {
         //HandlePlayerMovement();
         HandleGyroController();
-
+        HoverTips();
     }
 }

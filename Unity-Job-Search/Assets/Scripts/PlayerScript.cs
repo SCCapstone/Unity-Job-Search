@@ -31,7 +31,7 @@ public class PlayerScript : MonoBehaviour
     //public GameObject ResumeButton;
 
     public Canvas myCanvas; // This is MAIN MENU WHEN YOU HIT LAPTOP
-
+    public GameObject tutorial;
     public GameObject laptop;
     public GameObject videoPlayer;
     public StreamVideo handshakePlay;
@@ -60,7 +60,16 @@ public class PlayerScript : MonoBehaviour
 
     void Start()
     {
-        
+        Debug.Log(PlayerPrefs.HasKey("Tutorial"));
+        if (PlayerPrefs.HasKey("Tutorial") == false)
+        {
+            tutorial.SetActive(true);
+            speed = 0.0f;
+        }
+        else
+        {
+            speed = 18.0f;
+        }
         myCanvas.enabled = false;
         myCanvas.GetComponent<LaptopMenu>().closeLaptopMenu();
         myCanvas.GetComponent<LaptopMenu>().closeResumeMenu();
@@ -269,6 +278,9 @@ public class PlayerScript : MonoBehaviour
                 img2.enabled = false;
                 laptop.GetComponent<BoxCollider>().enabled = true;
                 rawImage.GetComponent<RawImage>().color = Color.white;
+                tutorial.SetActive(false);
+                PlayerPrefs.SetInt("Tutorial", 1);
+                speed = 18.0f;
             }
 
             if (hit.collider.gameObject.name == "Radio")
