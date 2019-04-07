@@ -22,7 +22,7 @@ public class StaticPlayerScript : MonoBehaviour
     public GameObject ccBackToFront;
     public GameObject showText;
     public GameObject Textbg;
-
+    public AudioClip sound;
     public GameObject TEST;
     RaycastHit hit;
     //public Text DisplayText;
@@ -51,7 +51,7 @@ public class StaticPlayerScript : MonoBehaviour
         cameraRig.transform.position = Vector3.Lerp(cameraRig.transform.position, transform.position, 10f * Time.deltaTime);
     }
     */
-
+   
     void HandleGyroController()
     {
         //oculusGoRemote.transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTrackedRemote);
@@ -69,12 +69,15 @@ public class StaticPlayerScript : MonoBehaviour
                 {
                     //DisplayText.text = "Opened Door";
                     SceneManager.LoadScene("Inside_Front_Entrance");
+                    
                 }
             }
             if (hit.collider.gameObject.name == "outsideToDorm")
             {
                 //Door.GetComponent<DoorBehavior>().displayText();
                 outsideToDorm.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
+                
+                
                 if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     //DisplayText.text = "Opened Door";

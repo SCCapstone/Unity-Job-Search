@@ -6,25 +6,32 @@ public class PlaySound : MonoBehaviour {
 
     public AudioClip sound;
     public float Volume;
-    AudioSource audio;
-    public bool playedAlready;
+    public AudioSource audio;
+    public bool alreadyPlayed;
 
 	// Use this for initialization
 	void Start () {
-        audio = GetComponent<AudioSource>();
-        playedAlready = false;
-        playedAlready = PlayerPrefs.GetInt(sound.name) == 1 ? true : false;
 
+        audio.clip = sound;
+
+        alreadyPlayed = PlayerPrefs.GetInt(sound.name) == 1 ? true : false;
+        Debug.Log("FIRST "+ (PlayerPrefs.GetInt(sound.name) == 1 ? true : false));
+        
+        if (alreadyPlayed == false)
+        {
+            audio.PlayOneShot(sound, Volume);
+            alreadyPlayed = true;
+            PlayerPrefs.SetInt(sound.name, 1);
+            Debug.Log("TEST! " + (PlayerPrefs.GetInt(sound.name) == 1 ? true : false));
+        }
+        
+        
     }
+    
 	
 	// Update is called once per frame
 	void Update () {
-        if (!playedAlready)
-        {
-            audio.PlayOneShot(sound, Volume);
-            playedAlready = true;
-            PlayerPrefs.SetInt(sound.name, playedAlready ? 1 : 0);
-        }
+      
         
 	}
 }

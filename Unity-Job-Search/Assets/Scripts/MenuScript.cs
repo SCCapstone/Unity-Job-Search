@@ -40,7 +40,9 @@ public class MenuScript : MonoBehaviour
                 StartCard.GetComponent<VRButtonBehavior>().changeColor();
                 if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
+                    PlayerPrefs.DeleteAll();
                     SceneManager.LoadScene("Dorm");
+                    
                 }
             }
             else if (hit.collider.gameObject.name == "ExitCard")
