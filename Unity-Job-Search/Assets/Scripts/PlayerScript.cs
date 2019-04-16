@@ -281,6 +281,8 @@ public class PlayerScript : MonoBehaviour
                 tutorial.SetActive(false);
                 PlayerPrefs.SetInt("Tutorial", 1);
                 speed = 18.0f;
+                // No way this is going to solve Issues #109 and #110 but its worth a shot
+                myCanvas.GetComponent<LaptopMenu>().openLaptopMenu();
             }
 
             if (hit.collider.gameObject.name == "Radio")
