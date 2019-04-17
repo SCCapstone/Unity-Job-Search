@@ -24,12 +24,13 @@ public class StreamVideo : MonoBehaviour
         }
 
     }
-    public void playVideo()
+    public bool playVideo()
     {
 
         rawImage.texture = video.texture;
         video.Play();
         audio.Play();
+        return true;
     }
 
     public bool isReady()
@@ -43,6 +44,18 @@ public class StreamVideo : MonoBehaviour
             return false;
         }
     }
+    public bool isDone()
+    {
+        if( (ulong)video.frame == video.frameCount)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public void PlayPause()
     {
 

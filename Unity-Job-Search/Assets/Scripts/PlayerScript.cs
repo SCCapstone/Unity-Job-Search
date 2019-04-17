@@ -52,6 +52,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject interviewGoodEnding;
     public GameObject interviewBadEnding;
 
+    private bool isHandshakePlaying;
 
     public Image img1, img2; // Images for the Examples
 
@@ -174,7 +175,7 @@ public class PlayerScript : MonoBehaviour
             }
             if(hit.collider.gameObject.name == "Computer")
             {
-                
+         
                 if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     if (visited_jobfair)
@@ -189,7 +190,7 @@ public class PlayerScript : MonoBehaviour
                     {
                         myCanvas.enabled = true;
                         myCanvas.GetComponent<LaptopMenu>().openLaptopMenu(); // handshake
-                        laptop.GetComponent<BoxCollider>().enabled = false;
+                        laptop.GetComponent<BoxCollider>().enabled = false; // Laptop is computer now btw
                     }
                 }
             }
@@ -205,8 +206,25 @@ public class PlayerScript : MonoBehaviour
                     {
                         
                         myCanvas.GetComponent<LaptopMenu>().closeLaptopMenu();
-                        handshakePlay.playVideo();
+                        isHandshakePlaying = handshakePlay.playVideo();
                     }
+                }
+            }
+            if (isHandshakePlaying)
+            {
+                if (handshakePlay.isDone())
+                {
+                    Debug.Log("VIDEO DONE!");
+                    handshakePlay.video.Stop();
+                    myCanvas.enabled = false; // Resetting it
+                    myCanvas.enabled = true; // Then enabling it
+                    
+                    myCanvas.GetComponent<LaptopMenu>().openLaptopMenu();
+
+                }
+                else
+                {
+                    Debug.Log("ERROR?");
                 }
             }
             if (hit.collider.gameObject.name == "resume_btn")
@@ -282,7 +300,7 @@ public class PlayerScript : MonoBehaviour
                 PlayerPrefs.SetInt("Tutorial", 1);
                 speed = 18.0f;
                 // No way this is going to solve Issues #109 and #110 but its worth a shot
-                myCanvas.GetComponent<LaptopMenu>().openLaptopMenu();
+                
             }
 
             if (hit.collider.gameObject.name == "Radio")
@@ -392,5 +410,6 @@ public class PlayerScript : MonoBehaviour
     {
         HandlePlayerMovement();
         HandleGyroController();
+        
     }
 }
