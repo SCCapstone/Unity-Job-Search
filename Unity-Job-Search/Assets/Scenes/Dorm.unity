@@ -7048,7 +7048,6 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: '
 
-
     Welcome to Unity Job Search!
 
 
@@ -7056,6 +7055,9 @@ MonoBehaviour:
 
 
     Use The Computer for Job Finding and Resume Tips
+
+
+    Use the pad to move around!
 
 
     Press The Back Button or X to continue!
@@ -7129,12 +7131,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 0}
-    characterCount: 154
+    characterCount: 182
     spriteCount: 0
-    spaceCount: 32
-    wordCount: 28
+    spaceCount: 38
+    wordCount: 34
     linkCount: 0
-    lineCount: 13
+    lineCount: 14
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0

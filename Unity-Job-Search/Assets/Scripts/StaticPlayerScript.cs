@@ -40,6 +40,7 @@ public class StaticPlayerScript : MonoBehaviour
     public GameObject Darla;
     public GameObject CEC;
 
+    private bool canvasOn;
     //public Text DisplayText;
     //public GameObject Door;
 
@@ -66,6 +67,10 @@ public class StaticPlayerScript : MonoBehaviour
         cameraRig.transform.position = Vector3.Lerp(cameraRig.transform.position, transform.position, 10f * Time.deltaTime);
     }
     */
+    void Start()
+    {
+        canvasOn = false;
+    }
 
     void HandleGyroController()
     {
@@ -210,13 +215,15 @@ public class StaticPlayerScript : MonoBehaviour
             }*/
 
 
-            if (!returnCanvas.enabled && OVRInput.Get(OVRInput.Button.Back) == true)
+            if (OVRInput.Get(OVRInput.Button.Back) == true)
             {
                 returnCanvas.enabled = true;
+                canvasOn = true;
                 returnCanvas.GetComponent<LaptopMenu>().openLaptopMenu(); // Although its not really LaptopMenu.. Just using the functionality of it.. just opens menu linked
             }
-            if (returnCanvas.enabled && OVRInput.Get(OVRInput.Button.Back) == true)
+            if (canvasOn && OVRInput.Get(OVRInput.Button.Back) == true)
             {
+                canvasOn = false;
                 returnCanvas.enabled = false;
                 returnCanvas.GetComponent<LaptopMenu>().closeLaptopMenu(); // Although its not really LaptopMenu.. Just using the functionality of it.. just opens menu linked
                 map.enabled = false;

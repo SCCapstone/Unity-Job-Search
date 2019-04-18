@@ -46,7 +46,7 @@ public class StaticPlayerCEC : MonoBehaviour
 
 
 
-
+    private bool canvasOn;
     //public Text DisplayText;
     //public GameObject Door;
 
@@ -72,7 +72,11 @@ public class StaticPlayerCEC : MonoBehaviour
         cameraRig.transform.position = Vector3.Lerp(cameraRig.transform.position, transform.position, 10f * Time.deltaTime);
     }
     */
-
+    void Start()
+    {
+        canvasOn = false;
+        
+    }
     void HandleGyroController()
     {
         //oculusGoRemote.transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTrackedRemote);
@@ -256,13 +260,15 @@ public class StaticPlayerCEC : MonoBehaviour
 
             // Below is PauseMenu/Campus Map
 
-            if (!returnCanvas.enabled && OVRInput.Get(OVRInput.Button.Back) == true)
+            if (OVRInput.Get(OVRInput.Button.Back) == true)
             {
                 returnCanvas.enabled = true;
+                canvasOn = true;
                 returnCanvas.GetComponent<LaptopMenu>().openLaptopMenu(); // Although its not really LaptopMenu.. Just using the functionality of it.. just opens menu linked
             }
-            if(returnCanvas.enabled && OVRInput.Get(OVRInput.Button.Back) == true)
+            if(canvasOn && OVRInput.Get(OVRInput.Button.Back) == true)
             {
+                canvasOn = false;
                 returnCanvas.enabled = false;
                 returnCanvas.GetComponent<LaptopMenu>().closeLaptopMenu(); // Although its not really LaptopMenu.. Just using the functionality of it.. just opens menu linked
                 map.enabled = false;
