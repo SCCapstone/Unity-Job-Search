@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
 public class StaticPlayerCEC : MonoBehaviour
 {
     public Vector2 joystick;
@@ -27,6 +28,25 @@ public class StaticPlayerCEC : MonoBehaviour
     public GameObject showText;
     public GameObject Textbg;
     RaycastHit hit;
+
+
+
+    public Canvas returnCanvas;
+    public Image map;
+    public RawImage rawImage;
+    public GameObject fairtxt;
+    public GameObject dormtxt;
+    public GameObject darlatxt;
+    public GameObject cectxt;
+
+    public GameObject Fair;
+    public GameObject Dorm;
+    public GameObject Darla;
+    public GameObject CEC;
+
+
+
+
     //public Text DisplayText;
     //public GameObject Door;
 
@@ -231,6 +251,77 @@ public class StaticPlayerCEC : MonoBehaviour
             //Debug.DrawLine(oculusGoRemote.transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.cyan);
             //Debug.Log("Did Hit");
             */
+
+
+
+            // Below is PauseMenu/Campus Map
+
+            if (!returnCanvas.enabled && OVRInput.Get(OVRInput.Button.Back) == true)
+            {
+                returnCanvas.enabled = true;
+                returnCanvas.GetComponent<LaptopMenu>().openLaptopMenu(); // Although its not really LaptopMenu.. Just using the functionality of it.. just opens menu linked
+            }
+            if(returnCanvas.enabled && OVRInput.Get(OVRInput.Button.Back) == true)
+            {
+                returnCanvas.enabled = false;
+                returnCanvas.GetComponent<LaptopMenu>().closeLaptopMenu(); // Although its not really LaptopMenu.. Just using the functionality of it.. just opens menu linked
+                map.enabled = false;
+                Fair.SetActive(false);
+                Dorm.SetActive(false);
+                Darla.SetActive(false);
+                CEC.SetActive(false);
+                fairtxt.SetActive(false);
+                dormtxt.SetActive(false);
+                cectxt.SetActive(false);
+                darlatxt.SetActive(false);
+            }
+            if((hit.collider.gameObject.name == "Quit_Btn" && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true))
+            {
+                Application.Quit();
+            }
+            if ((hit.collider.gameObject.name == "Map_Btn" && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true))
+            {
+                returnCanvas.GetComponent<LaptopMenu>().closeLaptopMenu();
+                rawImage.GetComponent<RawImage>().color = Color.black;
+                map.enabled = true;
+                Fair.SetActive(true);
+                Dorm.SetActive(true);
+                Darla.SetActive(true);
+                //CEC.SetActive(true);
+            }
+            if(hit.collider.gameObject.name == "Dorm")
+            {
+                fairtxt.SetActive(false);
+                darlatxt.SetActive(false);
+                dormtxt.SetActive(true);
+                
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    SceneManager.LoadScene("Dorm");
+                }
+            }
+            if (hit.collider.gameObject.name == "Fair")
+            {
+                dormtxt.SetActive(false);
+                darlatxt.SetActive(false);
+                fairtxt.SetActive(true);
+                
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    SceneManager.LoadScene("CareerCenterFront");
+                }
+            }
+            if (hit.collider.gameObject.name == "Darla")
+            {
+                dormtxt.SetActive(false);
+                fairtxt.SetActive(false);
+                darlatxt.SetActive(true);
+
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    SceneManager.LoadScene("Outside_Front");
+                }
+            }
         }
     }
     void HoverTips()
