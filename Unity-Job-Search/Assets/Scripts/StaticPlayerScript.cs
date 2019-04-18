@@ -247,7 +247,7 @@ public class StaticPlayerScript : MonoBehaviour
                 }
                 else
                 {
-                    Fair.SetActive(true);
+                    //Fair.SetActive(true);
                     Dorm.SetActive(true);
                     Darla.SetActive(true);
                     CEC.SetActive(true);
