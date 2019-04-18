@@ -303,36 +303,40 @@ public class PlayerScript : MonoBehaviour
                 }
             }
 
-            if ((hit.collider.gameObject.name == "menu_exit" && OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) == true) || OVRInput.Get(OVRInput.Button.Back) == true)
-            {
-                if(img1.enabled || img2.enabled)
+            
+                if ((hit.collider.gameObject.name == "menu_exit" && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true) || OVRInput.Get(OVRInput.Button.Back) == true)
                 {
-                    img1.enabled = false;
-                    img2.enabled = false;
-                    rawImage.GetComponent<RawImage>().color = Color.white;
-                    myCanvas.enabled = false;
-                    myCanvas.enabled = true;
-                    myCanvas.GetComponent<LaptopMenu>().openResumeMenu();
-                }
-                else
-                {
-                    myCanvas.enabled = false;
+                    if (img1.enabled || img2.enabled)
+                    {
+                        img1.enabled = false;
+                        img2.enabled = false;
+                        rawImage.GetComponent<RawImage>().color = Color.white;
+                        myCanvas.enabled = false;
+                        myCanvas.enabled = true;
+                        myCanvas.GetComponent<LaptopMenu>().closeLaptopMenu();
+                        myCanvas.GetComponent<LaptopMenu>().openResumeMenu();
+                        isHandshakePlaying = false;
+                        isResumeVidPlaying = false;
+                    }
+                    else
+                    {
+                        myCanvas.enabled = false;
+                        myCanvas.GetComponent<LaptopMenu>().closeResumeMenu();
+                        myCanvas.GetComponent<LaptopMenu>().closeLaptopMenu();
+                        handshakePlay.video.Stop();
+                        resumePlay.video.Stop();
+                        isHandshakePlaying = false;
+                        isResumeVidPlaying = false;
+                        laptop.GetComponent<BoxCollider>().enabled = true;
+                        rawImage.GetComponent<RawImage>().color = Color.white;
+                        tutorial.SetActive(false);
+                        PlayerPrefs.SetInt("Tutorial", 1);
+                        speed = 18.0f;
+                    }
 
-                    myCanvas.GetComponent<LaptopMenu>().closeLaptopMenu();
-                    handshakePlay.video.Stop();
-                    resumePlay.video.Stop();
+                    // No way this is going to solve Issues #109 and #110 but its worth a shot
 
-                    laptop.GetComponent<BoxCollider>().enabled = true;
-                    rawImage.GetComponent<RawImage>().color = Color.white;
-                    tutorial.SetActive(false);
-                    PlayerPrefs.SetInt("Tutorial", 1);
-                    speed = 18.0f;
-                }
-               
-                // No way this is going to solve Issues #109 and #110 but its worth a shot
-                
             }
-
             if (hit.collider.gameObject.name == "Radio")
             {
                 if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
