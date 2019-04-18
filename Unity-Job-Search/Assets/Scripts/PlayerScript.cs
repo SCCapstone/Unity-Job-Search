@@ -52,6 +52,8 @@ public class PlayerScript : MonoBehaviour
     public GameObject interviewGoodEnding;
     public GameObject interviewBadEnding;
 
+    private bool isHandshakePlaying;
+    private bool isResumeVidPlaying;
 
     public Image img1, img2; // Images for the Examples
 
@@ -174,7 +176,7 @@ public class PlayerScript : MonoBehaviour
             }
             if(hit.collider.gameObject.name == "Computer")
             {
-                
+         
                 if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
                     if (visited_jobfair)
@@ -189,7 +191,7 @@ public class PlayerScript : MonoBehaviour
                     {
                         myCanvas.enabled = true;
                         myCanvas.GetComponent<LaptopMenu>().openLaptopMenu(); // handshake
-                        laptop.GetComponent<BoxCollider>().enabled = false;
+                        laptop.GetComponent<BoxCollider>().enabled = false; // Laptop is computer now btw
                     }
                 }
             }
@@ -205,8 +207,25 @@ public class PlayerScript : MonoBehaviour
                     {
                         
                         myCanvas.GetComponent<LaptopMenu>().closeLaptopMenu();
-                        handshakePlay.playVideo();
+                        isHandshakePlaying = handshakePlay.playVideo();
                     }
+                }
+            }
+            if (isHandshakePlaying)
+            {
+                if (handshakePlay.isDone())
+                {
+                    Debug.Log("VIDEO DONE!");
+                    handshakePlay.video.Stop();
+                    myCanvas.enabled = false; // Resetting it
+                    myCanvas.enabled = true; // Then enabling it
+                    
+                    myCanvas.GetComponent<LaptopMenu>().openLaptopMenu();
+
+                }
+                else
+                {
+                    Debug.Log("ERROR?");
                 }
             }
             if (hit.collider.gameObject.name == "resume_btn")
@@ -237,8 +256,25 @@ public class PlayerScript : MonoBehaviour
                     if (resumePlay.isReady() == true)
                     {
                         myCanvas.GetComponent<LaptopMenu>().closeResumeMenu();
-                        resumePlay.playVideo();
+                        isResumeVidPlaying = resumePlay.playVideo();
                     }
+                }
+            }
+            if (isResumeVidPlaying)
+            {
+                if (resumePlay.isDone())
+                {
+                    Debug.Log("VIDEO DONE!");
+                    resumePlay.video.Stop();
+                    myCanvas.enabled = false; // Resetting it
+                    myCanvas.enabled = true; // Then enabling it
+
+                    myCanvas.GetComponent<LaptopMenu>().openResumeMenu();
+
+                }
+                else
+                {
+                    Debug.Log("ERROR?");
                 }
             }
             if (hit.collider.gameObject.name == "example1")
@@ -253,6 +289,7 @@ public class PlayerScript : MonoBehaviour
                     rawImage.GetComponent<RawImage>().color = Color.black;
                 }
             }
+            
             if (hit.collider.gameObject.name == "example2")
             {
                 example2.GetComponent<VRButtonBehavior>().changeColor();
@@ -266,23 +303,40 @@ public class PlayerScript : MonoBehaviour
                 }
             }
 
-            if ((hit.collider.gameObject.name == "menu_exit" && OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) == true) || OVRInput.Get(OVRInput.Button.Back) == true)
-            {
-                
-                myCanvas.enabled = false;
-                myCanvas.GetComponent<LaptopMenu>().closeResumeMenu();
-                myCanvas.GetComponent<LaptopMenu>().closeLaptopMenu();
-                handshakePlay.video.Stop();
-                resumePlay.video.Stop();
-                img1.enabled = false;
-                img2.enabled = false;
-                laptop.GetComponent<BoxCollider>().enabled = true;
-                rawImage.GetComponent<RawImage>().color = Color.white;
-                tutorial.SetActive(false);
-                PlayerPrefs.SetInt("Tutorial", 1);
-                speed = 18.0f;
-            }
+            
+                if ((hit.collider.gameObject.name == "menu_exit" && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true) || OVRInput.Get(OVRInput.Button.Back) == true)
+                {
+                    if (img1.enabled || img2.enabled)
+                    {
+                        img1.enabled = false;
+                        img2.enabled = false;
+                        rawImage.GetComponent<RawImage>().color = Color.white;
+                        myCanvas.enabled = false;
+                        myCanvas.enabled = true;
+                        myCanvas.GetComponent<LaptopMenu>().closeLaptopMenu();
+                        myCanvas.GetComponent<LaptopMenu>().openResumeMenu();
+                        isHandshakePlaying = false;
+                        isResumeVidPlaying = false;
+                    }
+                    else
+                    {
+                        myCanvas.enabled = false;
+                        myCanvas.GetComponent<LaptopMenu>().closeResumeMenu();
+                        myCanvas.GetComponent<LaptopMenu>().closeLaptopMenu();
+                        handshakePlay.video.Stop();
+                        resumePlay.video.Stop();
+                        isHandshakePlaying = false;
+                        isResumeVidPlaying = false;
+                        laptop.GetComponent<BoxCollider>().enabled = true;
+                        rawImage.GetComponent<RawImage>().color = Color.white;
+                        tutorial.SetActive(false);
+                        PlayerPrefs.SetInt("Tutorial", 1);
+                        speed = 18.0f;
+                    }
 
+                    // No way this is going to solve Issues #109 and #110 but its worth a shot
+
+            }
             if (hit.collider.gameObject.name == "Radio")
             {
                 if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
@@ -390,5 +444,6 @@ public class PlayerScript : MonoBehaviour
     {
         HandlePlayerMovement();
         HandleGyroController();
+        
     }
 }
