@@ -2,13 +2,6 @@
 
 A VR Application in Unity that captures a series of locations and experiences that reflect the job search process at the University of South Carolina. A Beta release apk file can be found in the "releases" tab.
 
-# Authors/Owners
-* Hung Nguyen
-* Khalil Ulmer
-* Matthew Rickabaugh
-* Rukia Brooks
-* Victor Phillips
-
 # Installation for development
 ## Prerequisites
 * Clone Unity Job Search Repository
