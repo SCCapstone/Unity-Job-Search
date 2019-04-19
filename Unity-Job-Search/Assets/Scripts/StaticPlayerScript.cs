@@ -42,6 +42,8 @@ public class StaticPlayerScript : MonoBehaviour
     public GameObject CEC;
     public GameObject Tips;
     private bool canvasOn;
+    
+    private string sceneName;
     //public Text DisplayText;
     //public GameObject Door;
 
@@ -71,6 +73,8 @@ public class StaticPlayerScript : MonoBehaviour
     void Start()
     {
         canvasOn = false;
+        sceneName = SceneManager.GetActiveScene().name;
+        
     }
 
     void HandleGyroController()
@@ -78,10 +82,10 @@ public class StaticPlayerScript : MonoBehaviour
         //oculusGoRemote.transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTrackedRemote);
 
 
-        if (OVRInput.GetDown(OVRInput.Button.Back) == true && canvasOn == false)
+        if (canvasOn == false && OVRInput.GetDown(OVRInput.Button.Back) == true)
         {
             canvasOn = true;
-            var sceneName = SceneManager.GetActiveScene().name;
+            
             if (sceneName == "Outside_Front")
             {
                 outsideToInside.SetActive(false);
@@ -115,6 +119,7 @@ public class StaticPlayerScript : MonoBehaviour
             {
                 Tips.SetActive(false);
             }
+            
             returnCanvas.SetActive(true);
 
             returnCanvas.GetComponent<LaptopMenu>().openLaptopMenu();
@@ -123,7 +128,7 @@ public class StaticPlayerScript : MonoBehaviour
         else if (canvasOn == true && OVRInput.GetDown(OVRInput.Button.Back) == true)
         {
             canvasOn = false;
-            var sceneName = SceneManager.GetActiveScene().name;
+            
             if (sceneName == "Outside_Front")
             {
                 outsideToInside.SetActive(true);
@@ -310,8 +315,64 @@ public class StaticPlayerScript : MonoBehaviour
                 Debug.Log("FK");
             }*/
 
+            if ((hit.collider.gameObject.name == "Quit_Btn" && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true))
+            {
+                Application.Quit();
+            }
+            if ((hit.collider.gameObject.name == "Map_Btn" && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true))
+            {
+                returnCanvas.GetComponent<LaptopMenu>().closeLaptopMenu();
+                map.SetActive(true);
+                rawImage.GetComponent<RawImage>().color = Color.black;
+                if(sceneName == "Outside_Front" || sceneName == "Inside_Front_Entrance" || sceneName == "Inside_Front_Desk")
+                {
+                    Fair.SetActive(true);
+                    Dorm.SetActive(true);
+                    CEC.SetActive(true);
+                }
+                else if(sceneName == "CareerCenterFront" || sceneName == "CareerCenterBack")
+                {
+                    Darla.SetActive(true);
+                    Dorm.SetActive(true);
+                    CEC.SetActive(true);
+                }
+                
+             
+            }
+            if (hit.collider.gameObject.name == "Dorm")
+            {
+                fairtxt.SetActive(false);
+                darlatxt.SetActive(false);
+                dormtxt.SetActive(true);
 
-            
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    SceneManager.LoadScene("Dorm");
+                }
+            }
+            if (hit.collider.gameObject.name == "Fair")
+            {
+                dormtxt.SetActive(false);
+                darlatxt.SetActive(false);
+                fairtxt.SetActive(true);
+
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    SceneManager.LoadScene("CareerCenterFront");
+                }
+            }
+            if (hit.collider.gameObject.name == "Darla")
+            {
+                dormtxt.SetActive(false);
+                fairtxt.SetActive(false);
+                darlatxt.SetActive(true);
+
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    SceneManager.LoadScene("Outside_Front");
+                }
+            }
+
         }
     }
 
