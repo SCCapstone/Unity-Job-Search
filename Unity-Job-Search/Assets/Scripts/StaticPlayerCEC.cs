@@ -361,7 +361,7 @@ public class StaticPlayerCEC : MonoBehaviour
             
             if((hit.collider.gameObject.name == "Quit_Btn" && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true))
             {
-                Application.Quit();
+                SceneManager.LoadScene("MainMenu");
             }
             if ((hit.collider.gameObject.name == "Map_Btn" && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true))
             {
@@ -392,6 +392,8 @@ public class StaticPlayerCEC : MonoBehaviour
                 
                 if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
+                    var visited_jobfair = true;  //***This should trigger the laptop to get an email from an employer***
+                    PlayerPrefs.SetInt("visited_jobfair", visited_jobfair ? 1 : 0);
                     SceneManager.LoadScene("CareerCenterFront");
                 }
             }

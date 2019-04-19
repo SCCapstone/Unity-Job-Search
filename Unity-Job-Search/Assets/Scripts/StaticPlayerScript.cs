@@ -42,7 +42,7 @@ public class StaticPlayerScript : MonoBehaviour
     public GameObject CEC;
     public GameObject Tips;
     private bool canvasOn;
-    
+    public GameObject fkingCamera;
     private string sceneName;
     //public Text DisplayText;
     //public GameObject Door;
@@ -74,7 +74,7 @@ public class StaticPlayerScript : MonoBehaviour
     {
         canvasOn = false;
         sceneName = SceneManager.GetActiveScene().name;
-        
+        fkingCamera.SetActive(true);
     }
 
     void HandleGyroController()
@@ -317,7 +317,7 @@ public class StaticPlayerScript : MonoBehaviour
 
             if ((hit.collider.gameObject.name == "Quit_Btn" && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true))
             {
-                Application.Quit();
+                SceneManager.LoadScene("MainMenu");
             }
             if ((hit.collider.gameObject.name == "Map_Btn" && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true))
             {
@@ -343,6 +343,7 @@ public class StaticPlayerScript : MonoBehaviour
             {
                 fairtxt.SetActive(false);
                 darlatxt.SetActive(false);
+                cectxt.SetActive(false);
                 dormtxt.SetActive(true);
 
                 if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
@@ -354,10 +355,13 @@ public class StaticPlayerScript : MonoBehaviour
             {
                 dormtxt.SetActive(false);
                 darlatxt.SetActive(false);
+                cectxt.SetActive(false);
                 fairtxt.SetActive(true);
 
                 if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
+                    var visited_jobfair = true;  //***This should trigger the laptop to get an email from an employer***
+                    PlayerPrefs.SetInt("visited_jobfair", visited_jobfair ? 1 : 0);
                     SceneManager.LoadScene("CareerCenterFront");
                 }
             }
@@ -365,6 +369,7 @@ public class StaticPlayerScript : MonoBehaviour
             {
                 dormtxt.SetActive(false);
                 fairtxt.SetActive(false);
+                cectxt.SetActive(false);
                 darlatxt.SetActive(true);
 
                 if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
@@ -372,7 +377,17 @@ public class StaticPlayerScript : MonoBehaviour
                     SceneManager.LoadScene("Outside_Front");
                 }
             }
-
+            if (hit.collider.gameObject.name == "Swearingen")
+            {
+                dormtxt.SetActive(false);
+                fairtxt.SetActive(false);
+                darlatxt.SetActive(false);
+                cectxt.SetActive(true);
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    SceneManager.LoadScene("CECOutsideFar");
+                }
+            }
         }
     }
 
