@@ -44,6 +44,8 @@ public class StaticPlayerScript : MonoBehaviour
     private bool canvasOn;
     public GameObject fkingCamera;
     private string sceneName;
+    private bool tutorialOff;
+    public GameObject tutorial;
     //public Text DisplayText;
     //public GameObject Door;
 
@@ -73,8 +75,25 @@ public class StaticPlayerScript : MonoBehaviour
     void Start()
     {
         canvasOn = false;
+        
         sceneName = SceneManager.GetActiveScene().name;
         fkingCamera.SetActive(true);
+        if (PlayerPrefs.HasKey("darlatutorial") == false && sceneName == "Outside_Front")
+        {
+            
+            tutorial.SetActive(true);
+            outsideToInside.SetActive(false);
+            outsideToDorm.SetActive(false);
+            if(Tips != null) { Tips.SetActive(false); }
+            
+        }
+        else if(PlayerPrefs.HasKey("fairtutorial") == false && sceneName == "CareerCenterFront")
+        {
+            tutorial.SetActive(true);
+            ccFrontToBack.SetActive(false);
+            ccFrontToDorm.SetActive(false);
+            if (Tips != null) { Tips.SetActive(false); }
+        }
     }
 
     void HandleGyroController()
@@ -88,8 +107,10 @@ public class StaticPlayerScript : MonoBehaviour
             
             if (sceneName == "Outside_Front")
             {
+                tutorial.SetActive(false);
                 outsideToInside.SetActive(false);
                 outsideToDorm.SetActive(false);
+                
             }
             else if (sceneName == "Inside_Front_Entrance")
             {
@@ -103,6 +124,7 @@ public class StaticPlayerScript : MonoBehaviour
             }
             else if (sceneName == "CareerCenterFront")
             {
+                tutorial.SetActive(false);
                 ccFrontToBack.SetActive(false);
                 ccFrontToDorm.SetActive(false);
             }
@@ -279,6 +301,28 @@ public class StaticPlayerScript : MonoBehaviour
                     // TODO: add something when interacted with
                 }
             }
+            if((hit.collider.gameObject.name == "menu_exit" && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true))
+            {
+                
+                if (sceneName == "Outside_Front")
+                {
+                    PlayerPrefs.SetInt("darlatutorial", 1);
+                    tutorial.SetActive(false);
+                    outsideToInside.SetActive(true);
+                    outsideToDorm.SetActive(true);
+                    if (Tips != null) { Tips.SetActive(true); }
+                }
+                else if(sceneName == "CareerCenterFront")
+                {
+                    PlayerPrefs.SetInt("fairtutorial", 1);
+                    tutorial.SetActive(false);
+                    ccFrontToBack.SetActive(true);
+                    ccFrontToDorm.SetActive(true);
+                    if (Tips != null) { Tips.SetActive(true); }
+                }
+                
+
+            }
             /*
             else if (hit.collider.gameObject.name == "CareerCenter_Button")
             {
@@ -318,6 +362,7 @@ public class StaticPlayerScript : MonoBehaviour
             if ((hit.collider.gameObject.name == "Quit_Btn" && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true))
             {
                 SceneManager.LoadScene("MainMenu");
+                
             }
             if ((hit.collider.gameObject.name == "Map_Btn" && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true))
             {

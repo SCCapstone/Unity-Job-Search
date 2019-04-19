@@ -44,7 +44,7 @@ public class StaticPlayerCEC : MonoBehaviour
     public GameObject Darla;
     public GameObject CEC;
     public GameObject Tips;
-
+    public GameObject tutorial;
 
     private bool canvasOn;
     //public Text DisplayText;
@@ -75,7 +75,14 @@ public class StaticPlayerCEC : MonoBehaviour
     void Start()
     {
         canvasOn = false;
-        
+        if (PlayerPrefs.HasKey("Swearingen") == false)
+        {
+
+            tutorial.SetActive(true);
+            frontDoorToInside1.SetActive(false);
+            outsideToDorm.SetActive(false);
+            if (Tips != null) { Tips.SetActive(false); }
+        }
     }
     void HandleGyroController()
     {
@@ -86,6 +93,7 @@ public class StaticPlayerCEC : MonoBehaviour
             var sceneName = SceneManager.GetActiveScene().name;
             if(sceneName == "CECOutsideFar")
             {
+                tutorial.SetActive(false);
                 outsideToDorm.SetActive(false);
                 frontDoorToInside1.SetActive(false);
             }
@@ -319,47 +327,54 @@ public class StaticPlayerCEC : MonoBehaviour
                 }
             }
 
-
-            /*if (hit.collider.gameObject.name == "frontDeskGO")
+            if ((hit.collider.gameObject.name == "menu_exit" && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true))
             {
-                //Door.GetComponent<DoorBehavior>().displayText();
-                frontDeskGO.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
-                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                PlayerPrefs.SetInt("Swearingen", 1);
+                tutorial.SetActive(false);
+                frontDoorToInside1.SetActive(true);
+                outsideToDorm.SetActive(true);
+                if (Tips != null) { Tips.SetActive(true); }
+            }
+                /*if (hit.collider.gameObject.name == "frontDeskGO")
                 {
-                    //DisplayText.text = "Opened Door";
-                    // TODO: add something when interacted with
+                    //Door.GetComponent<DoorBehavior>().displayText();
+                    frontDeskGO.GetComponent<MeshRenderer>().enabled = true; // should turn on mesh color when raycasted
+                    if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                    {
+                        //DisplayText.text = "Opened Door";
+                        // TODO: add something when interacted with
+                    }
                 }
-            }
-            /*
-            else if (hit.collider.gameObject.name == "CareerCenter_Button")
-            {
-
-                CareerCenterButton.GetComponent<VRButtonBehavior>().changeColor();
-                if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) == 1)
+                /*
+                else if (hit.collider.gameObject.name == "CareerCenter_Button")
                 {
-                    DisplayText.text = "Button Touched";
-                    SceneManager.LoadScene("Outside_Front");
+
+                    CareerCenterButton.GetComponent<VRButtonBehavior>().changeColor();
+                    if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) == 1)
+                    {
+                        DisplayText.text = "Button Touched";
+                        SceneManager.LoadScene("Outside_Front");
+                    }
                 }
-            }
-            else
-            {
-                Door.GetComponent<DoorBehavior>().hideText();
-                Door.GetComponent<DoorBehavior>().closeDoorMenu();
-                CareerCenterButton.GetComponent<VRButtonBehavior>().resetColor();
+                else
+                {
+                    Door.GetComponent<DoorBehavior>().hideText();
+                    Door.GetComponent<DoorBehavior>().closeDoorMenu();
+                    CareerCenterButton.GetComponent<VRButtonBehavior>().resetColor();
 
-            }
-
-
-            //Debug.DrawLine(oculusGoRemote.transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.cyan);
-            //Debug.Log("Did Hit");
-            */
+                }
 
 
+                //Debug.DrawLine(oculusGoRemote.transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.cyan);
+                //Debug.Log("Did Hit");
+                */
 
-            // Below is PauseMenu/Campus Map
 
-            
-            if((hit.collider.gameObject.name == "Quit_Btn" && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true))
+
+                // Below is PauseMenu/Campus Map
+
+
+                if ((hit.collider.gameObject.name == "Quit_Btn" && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true))
             {
                 SceneManager.LoadScene("MainMenu");
             }
