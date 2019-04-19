@@ -11,6 +11,7 @@ public class StaticPlayerScript : MonoBehaviour
     public GameObject centerEyeAnchor;
     public GameObject cameraRig;
     public GameObject oculusGoRemote;
+
     public GameObject outsideToInside;
     public GameObject outsideToDorm;
     public GameObject insideToOutside;
@@ -25,6 +26,26 @@ public class StaticPlayerScript : MonoBehaviour
     public AudioClip sound;
     public GameObject TEST;
     RaycastHit hit;
+
+
+    public GameObject returnCanvas;
+    public GameObject map;
+    public RawImage rawImage;
+    public GameObject fairtxt;
+    public GameObject dormtxt;
+    public GameObject darlatxt;
+    public GameObject cectxt;
+
+    public GameObject Fair;
+    public GameObject Dorm;
+    public GameObject Darla;
+    public GameObject CEC;
+    public GameObject Tips;
+    private bool canvasOn;
+    public GameObject fkingCamera;
+    private string sceneName;
+    private bool tutorialOff;
+    public GameObject tutorial;
     //public Text DisplayText;
     //public GameObject Door;
 
@@ -51,12 +72,134 @@ public class StaticPlayerScript : MonoBehaviour
         cameraRig.transform.position = Vector3.Lerp(cameraRig.transform.position, transform.position, 10f * Time.deltaTime);
     }
     */
-   
+    void Start()
+    {
+        canvasOn = false;
+        
+        sceneName = SceneManager.GetActiveScene().name;
+        fkingCamera.SetActive(true);
+        if (PlayerPrefs.HasKey("darlatutorial") == false && sceneName == "Outside_Front")
+        {
+            
+            tutorial.SetActive(true);
+            outsideToInside.SetActive(false);
+            outsideToDorm.SetActive(false);
+            if(Tips != null) { Tips.SetActive(false); }
+            
+        }
+        else if(PlayerPrefs.HasKey("fairtutorial") == false && sceneName == "CareerCenterFront")
+        {
+            tutorial.SetActive(true);
+            ccFrontToBack.SetActive(false);
+            ccFrontToDorm.SetActive(false);
+            if (Tips != null) { Tips.SetActive(false); }
+        }
+    }
+
     void HandleGyroController()
     {
         //oculusGoRemote.transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTrackedRemote);
 
-        
+
+        if (canvasOn == false && OVRInput.GetDown(OVRInput.Button.Back) == true)
+        {
+            canvasOn = true;
+            
+            if (sceneName == "Outside_Front")
+            {
+                tutorial.SetActive(false);
+                outsideToInside.SetActive(false);
+                outsideToDorm.SetActive(false);
+                
+            }
+            else if (sceneName == "Inside_Front_Entrance")
+            {
+                insideToOutside.SetActive(false);
+                insideToFrontDesk.SetActive(false);
+            }
+            else if (sceneName == "Inside_Front_Desk")
+            {
+                frontDeskGO.SetActive(false);
+                frontDeskToInside.SetActive(false);
+            }
+            else if (sceneName == "CareerCenterFront")
+            {
+                tutorial.SetActive(false);
+                ccFrontToBack.SetActive(false);
+                ccFrontToDorm.SetActive(false);
+            }
+            else if (sceneName == "CECInside2")
+            {
+                ccBackToFront.SetActive(false);
+                
+            }
+            else
+            {
+
+            }
+            if (Tips != null)
+            {
+                Tips.SetActive(false);
+            }
+            
+            returnCanvas.SetActive(true);
+
+            returnCanvas.GetComponent<LaptopMenu>().openLaptopMenu();
+
+        }
+        else if (canvasOn == true && OVRInput.GetDown(OVRInput.Button.Back) == true)
+        {
+            canvasOn = false;
+            
+            if (sceneName == "Outside_Front")
+            {
+                outsideToInside.SetActive(true);
+                outsideToDorm.SetActive(true);
+            }
+            else if (sceneName == "Inside_Front_Entrance")
+            {
+                insideToOutside.SetActive(true);
+                insideToFrontDesk.SetActive(true);
+            }
+            else if (sceneName == "Inside_Front_Desk")
+            {
+                frontDeskGO.SetActive(true);
+                frontDeskToInside.SetActive(true);
+            }
+            else if (sceneName == "CareerCenterFront")
+            {
+                ccFrontToBack.SetActive(true);
+                ccFrontToDorm.SetActive(true);
+            }
+            else if (sceneName == "CECInside2")
+            {
+                ccBackToFront.SetActive(true);
+
+            }
+            else
+            {
+
+            }
+            if (Tips != null)
+            {
+                Tips.SetActive(true);
+            }
+            returnCanvas.SetActive(false);
+            rawImage.GetComponent<RawImage>().color = Color.white;
+            returnCanvas.GetComponent<LaptopMenu>().closeLaptopMenu(); // Although its not really LaptopMenu.. Just using the functionality of it.. just opens menu linked
+            map.SetActive(false);
+            Fair.SetActive(false);
+            Dorm.SetActive(false);
+            Darla.SetActive(false);
+            CEC.SetActive(false);
+            fairtxt.SetActive(false);
+            dormtxt.SetActive(false);
+            cectxt.SetActive(false);
+            darlatxt.SetActive(false);
+
+
+        }
+
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(oculusGoRemote.transform.position, oculusGoRemote.transform.forward, out hit))
         {
@@ -158,6 +301,28 @@ public class StaticPlayerScript : MonoBehaviour
                     // TODO: add something when interacted with
                 }
             }
+            if((hit.collider.gameObject.name == "menu_exit" && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true))
+            {
+                
+                if (sceneName == "Outside_Front")
+                {
+                    PlayerPrefs.SetInt("darlatutorial", 1);
+                    tutorial.SetActive(false);
+                    outsideToInside.SetActive(true);
+                    outsideToDorm.SetActive(true);
+                    if (Tips != null) { Tips.SetActive(true); }
+                }
+                else if(sceneName == "CareerCenterFront")
+                {
+                    PlayerPrefs.SetInt("fairtutorial", 1);
+                    tutorial.SetActive(false);
+                    ccFrontToBack.SetActive(true);
+                    ccFrontToDorm.SetActive(true);
+                    if (Tips != null) { Tips.SetActive(true); }
+                }
+                
+
+            }
             /*
             else if (hit.collider.gameObject.name == "CareerCenter_Button")
             {
@@ -194,6 +359,80 @@ public class StaticPlayerScript : MonoBehaviour
                 Debug.Log("FK");
             }*/
 
+            if ((hit.collider.gameObject.name == "Quit_Btn" && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true))
+            {
+                SceneManager.LoadScene("MainMenu");
+                
+            }
+            if ((hit.collider.gameObject.name == "Map_Btn" && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true))
+            {
+                returnCanvas.GetComponent<LaptopMenu>().closeLaptopMenu();
+                map.SetActive(true);
+                rawImage.GetComponent<RawImage>().color = Color.black;
+                if(sceneName == "Outside_Front" || sceneName == "Inside_Front_Entrance" || sceneName == "Inside_Front_Desk")
+                {
+                    Fair.SetActive(true);
+                    Dorm.SetActive(true);
+                    CEC.SetActive(true);
+                }
+                else if(sceneName == "CareerCenterFront" || sceneName == "CareerCenterBack")
+                {
+                    Darla.SetActive(true);
+                    Dorm.SetActive(true);
+                    CEC.SetActive(true);
+                }
+                
+             
+            }
+            if (hit.collider.gameObject.name == "Dorm")
+            {
+                fairtxt.SetActive(false);
+                darlatxt.SetActive(false);
+                cectxt.SetActive(false);
+                dormtxt.SetActive(true);
+
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    SceneManager.LoadScene("Dorm");
+                }
+            }
+            if (hit.collider.gameObject.name == "Fair")
+            {
+                dormtxt.SetActive(false);
+                darlatxt.SetActive(false);
+                cectxt.SetActive(false);
+                fairtxt.SetActive(true);
+
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    var visited_jobfair = true;  //***This should trigger the laptop to get an email from an employer***
+                    PlayerPrefs.SetInt("visited_jobfair", visited_jobfair ? 1 : 0);
+                    SceneManager.LoadScene("CareerCenterFront");
+                }
+            }
+            if (hit.collider.gameObject.name == "Darla")
+            {
+                dormtxt.SetActive(false);
+                fairtxt.SetActive(false);
+                cectxt.SetActive(false);
+                darlatxt.SetActive(true);
+
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    SceneManager.LoadScene("Outside_Front");
+                }
+            }
+            if (hit.collider.gameObject.name == "Swearingen")
+            {
+                dormtxt.SetActive(false);
+                fairtxt.SetActive(false);
+                darlatxt.SetActive(false);
+                cectxt.SetActive(true);
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
+                {
+                    SceneManager.LoadScene("CECOutsideFar");
+                }
+            }
         }
     }
 
