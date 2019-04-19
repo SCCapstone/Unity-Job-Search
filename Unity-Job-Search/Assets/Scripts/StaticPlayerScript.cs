@@ -11,6 +11,7 @@ public class StaticPlayerScript : MonoBehaviour
     public GameObject centerEyeAnchor;
     public GameObject cameraRig;
     public GameObject oculusGoRemote;
+
     public GameObject outsideToInside;
     public GameObject outsideToDorm;
     public GameObject insideToOutside;
@@ -27,8 +28,8 @@ public class StaticPlayerScript : MonoBehaviour
     RaycastHit hit;
 
 
-    public Canvas returnCanvas;
-    public Image map;
+    public GameObject returnCanvas;
+    public GameObject map;
     public RawImage rawImage;
     public GameObject fairtxt;
     public GameObject dormtxt;
@@ -39,7 +40,7 @@ public class StaticPlayerScript : MonoBehaviour
     public GameObject Dorm;
     public GameObject Darla;
     public GameObject CEC;
-
+    public GameObject Tips;
     private bool canvasOn;
     //public Text DisplayText;
     //public GameObject Door;
@@ -76,7 +77,102 @@ public class StaticPlayerScript : MonoBehaviour
     {
         //oculusGoRemote.transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTrackedRemote);
 
-        
+
+        if (OVRInput.GetDown(OVRInput.Button.Back) == true && canvasOn == false)
+        {
+            canvasOn = true;
+            var sceneName = SceneManager.GetActiveScene().name;
+            if (sceneName == "Outside_Front")
+            {
+                outsideToInside.SetActive(false);
+                outsideToDorm.SetActive(false);
+            }
+            else if (sceneName == "Inside_Front_Entrance")
+            {
+                insideToOutside.SetActive(false);
+                insideToFrontDesk.SetActive(false);
+            }
+            else if (sceneName == "Inside_Front_Desk")
+            {
+                frontDeskGO.SetActive(false);
+                frontDeskToInside.SetActive(false);
+            }
+            else if (sceneName == "CareerCenterFront")
+            {
+                ccFrontToBack.SetActive(false);
+                ccFrontToDorm.SetActive(false);
+            }
+            else if (sceneName == "CECInside2")
+            {
+                ccBackToFront.SetActive(false);
+                
+            }
+            else
+            {
+
+            }
+            if (Tips != null)
+            {
+                Tips.SetActive(false);
+            }
+            returnCanvas.SetActive(true);
+
+            returnCanvas.GetComponent<LaptopMenu>().openLaptopMenu();
+
+        }
+        else if (canvasOn == true && OVRInput.GetDown(OVRInput.Button.Back) == true)
+        {
+            canvasOn = false;
+            var sceneName = SceneManager.GetActiveScene().name;
+            if (sceneName == "Outside_Front")
+            {
+                outsideToInside.SetActive(true);
+                outsideToDorm.SetActive(true);
+            }
+            else if (sceneName == "Inside_Front_Entrance")
+            {
+                insideToOutside.SetActive(true);
+                insideToFrontDesk.SetActive(true);
+            }
+            else if (sceneName == "Inside_Front_Desk")
+            {
+                frontDeskGO.SetActive(true);
+                frontDeskToInside.SetActive(true);
+            }
+            else if (sceneName == "CareerCenterFront")
+            {
+                ccFrontToBack.SetActive(true);
+                ccFrontToDorm.SetActive(true);
+            }
+            else if (sceneName == "CECInside2")
+            {
+                ccBackToFront.SetActive(true);
+
+            }
+            else
+            {
+
+            }
+            if (Tips != null)
+            {
+                Tips.SetActive(true);
+            }
+            returnCanvas.SetActive(false);
+            rawImage.GetComponent<RawImage>().color = Color.white;
+            returnCanvas.GetComponent<LaptopMenu>().closeLaptopMenu(); // Although its not really LaptopMenu.. Just using the functionality of it.. just opens menu linked
+            map.SetActive(false);
+            Fair.SetActive(false);
+            Dorm.SetActive(false);
+            Darla.SetActive(false);
+            CEC.SetActive(false);
+            fairtxt.SetActive(false);
+            dormtxt.SetActive(false);
+            cectxt.SetActive(false);
+            darlatxt.SetActive(false);
+
+
+        }
+
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(oculusGoRemote.transform.position, oculusGoRemote.transform.forward, out hit))
         {
@@ -215,85 +311,7 @@ public class StaticPlayerScript : MonoBehaviour
             }*/
 
 
-            if (OVRInput.Get(OVRInput.Button.Back) == true)
-            {
-                returnCanvas.enabled = true;
-                canvasOn = true;
-                returnCanvas.GetComponent<LaptopMenu>().openLaptopMenu(); // Although its not really LaptopMenu.. Just using the functionality of it.. just opens menu linked
-            }
-            if (canvasOn && OVRInput.Get(OVRInput.Button.Back) == true)
-            {
-                canvasOn = false;
-                returnCanvas.enabled = false;
-                returnCanvas.GetComponent<LaptopMenu>().closeLaptopMenu(); // Although its not really LaptopMenu.. Just using the functionality of it.. just opens menu linked
-                map.enabled = false;
-                Fair.SetActive(false);
-                Dorm.SetActive(false);
-                Darla.SetActive(false);
-                CEC.SetActive(false);
-                fairtxt.SetActive(false);
-                dormtxt.SetActive(false);
-                cectxt.SetActive(false);
-                darlatxt.SetActive(false);
-            }
-            if ((hit.collider.gameObject.name == "Quit_Btn" && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true))
-            {
-                Application.Quit();
-            }
-            if ((hit.collider.gameObject.name == "Map_Btn" && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true))
-            {
-                returnCanvas.GetComponent<LaptopMenu>().closeLaptopMenu();
-                rawImage.GetComponent<RawImage>().color = Color.black;
-                map.enabled = true;
-                if(SceneManager.GetActiveScene().name == "Outside_Front" || SceneManager.GetActiveScene().name == "Inside_Front_Entrance" || SceneManager.GetActiveScene().name == "Inside_Front_Desk")
-                {
-                    Fair.SetActive(true);
-                    Dorm.SetActive(true);
-                    //Darla.SetActive(true);
-                    CEC.SetActive(true);
-                }
-                else
-                {
-                    //Fair.SetActive(true);
-                    Dorm.SetActive(true);
-                    Darla.SetActive(true);
-                    CEC.SetActive(true);
-                }
-                
-            }
-            if (hit.collider.gameObject.name == "Dorm")
-            {
-                fairtxt.SetActive(false);
-                darlatxt.SetActive(false);
-                dormtxt.SetActive(true);
-
-                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
-                {
-                    SceneManager.LoadScene("Dorm");
-                }
-            }
-            if (hit.collider.gameObject.name == "Fair")
-            {
-                dormtxt.SetActive(false);
-                darlatxt.SetActive(false);
-                fairtxt.SetActive(true);
-
-                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
-                {
-                    SceneManager.LoadScene("CareerCenterFront");
-                }
-            }
-            if (hit.collider.gameObject.name == "Darla")
-            {
-                dormtxt.SetActive(false);
-                fairtxt.SetActive(false);
-                darlatxt.SetActive(true);
-
-                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true)
-                {
-                    SceneManager.LoadScene("Outside_Front");
-                }
-            }
+            
         }
     }
 
