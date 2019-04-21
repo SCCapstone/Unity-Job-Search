@@ -32,6 +32,8 @@ public class PlayerScript : MonoBehaviour
 
     public Canvas myCanvas; // This is MAIN MENU WHEN YOU HIT LAPTOP
     public GameObject tutorial;
+    public GameObject devPhoto;
+    public GameObject youwin;
     public GameObject laptop;
     public GameObject videoPlayer;
     public StreamVideo handshakePlay;
@@ -77,6 +79,9 @@ public class PlayerScript : MonoBehaviour
         myCanvas.GetComponent<LaptopMenu>().closeResumeMenu();
         img1.enabled = false;
         img2.enabled = false;
+
+        devPhoto.active = false;
+        youwin.active = false;
 
         q1.active = false;
         q2.active = false;
@@ -334,8 +339,6 @@ public class PlayerScript : MonoBehaviour
                         speed = 18.0f;
                     }
 
-                    // No way this is going to solve Issues #109 and #110 but its worth a shot
-
             }
             if (hit.collider.gameObject.name == "Radio")
             {
@@ -425,6 +428,11 @@ public class PlayerScript : MonoBehaviour
                     visited_jobfair = false;
                     PlayerPrefs.DeleteKey("visited_jobfair");
                     q4.active = false;
+
+                    StartCoroutine(Waiting(10.0f));
+
+                    youwin.active = true;
+                    devPhoto.active = true;
                 }
             }
             if (hit.collider.gameObject.name == "NoToTraining")
@@ -445,5 +453,10 @@ public class PlayerScript : MonoBehaviour
         HandlePlayerMovement();
         HandleGyroController();
         
+    }
+
+    IEnumerator Waiting(float t)
+    {
+        yield return new WaitForSeconds(t);
     }
 }
