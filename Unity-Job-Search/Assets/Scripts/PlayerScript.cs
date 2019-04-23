@@ -64,6 +64,7 @@ public class PlayerScript : MonoBehaviour
 
     void Start()
     {
+        
         Debug.Log(PlayerPrefs.HasKey("Tutorial"));
         if (PlayerPrefs.HasKey("Tutorial") == false)
         {
@@ -80,8 +81,8 @@ public class PlayerScript : MonoBehaviour
         img1.enabled = false;
         img2.enabled = false;
 
-        devPhoto.active = false;
-        youwin.active = false;
+        devPhoto.SetActive(false);
+        youwin.SetActive(false); 
 
         q1.active = false;
         q2.active = false;
@@ -95,6 +96,7 @@ public class PlayerScript : MonoBehaviour
         {
             marker.active = true;
             gotMail.active = true;
+            speed = 0.0f;
         }
     }
 
@@ -372,6 +374,7 @@ public class PlayerScript : MonoBehaviour
                     callBack.active = true;
                     visited_jobfair = false;  //***This should trigger the laptop to get an email from an employer***
                     PlayerPrefs.DeleteKey("visited_jobfair");
+                    speed = 18.0f;
                 }
             }
 
@@ -393,6 +396,7 @@ public class PlayerScript : MonoBehaviour
                     interviewBadEnding.active = true;
                     visited_jobfair = false;
                     PlayerPrefs.DeleteKey("visited_jobfair");
+                    speed = 18.0f;
                 }
             }
 
@@ -415,6 +419,7 @@ public class PlayerScript : MonoBehaviour
                     interviewBadEnding.active = true;
                     visited_jobfair = false;
                     PlayerPrefs.DeleteKey("visited_jobfair");
+                    speed = 18.0f;
                 }
             }
 
@@ -428,11 +433,10 @@ public class PlayerScript : MonoBehaviour
                     visited_jobfair = false;
                     PlayerPrefs.DeleteKey("visited_jobfair");
                     q4.active = false;
-
+                    speed = 18.0f;
                     StartCoroutine(Waiting(10.0f));
 
-                    youwin.active = true;
-                    devPhoto.active = true;
+                    
                 }
             }
             if (hit.collider.gameObject.name == "NoToTraining")
@@ -443,6 +447,7 @@ public class PlayerScript : MonoBehaviour
                     q4.active = false;
                     visited_jobfair = false;
                     PlayerPrefs.DeleteKey("visited_jobfair");
+                    speed = 18.0f;
                 }
             }
         }
@@ -458,5 +463,7 @@ public class PlayerScript : MonoBehaviour
     IEnumerator Waiting(float t)
     {
         yield return new WaitForSeconds(t);
+        devPhoto.SetActive(true);
+        youwin.SetActive(true);
     }
 }

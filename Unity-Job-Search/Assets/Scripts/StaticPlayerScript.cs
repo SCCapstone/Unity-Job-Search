@@ -320,8 +320,8 @@ public class StaticPlayerScript : MonoBehaviour
                     ccFrontToDorm.SetActive(true);
                     if (Tips != null) { Tips.SetActive(true); }
                 }
-                
 
+                returnCanvas.SetActive(false);
             }
             /*
             else if (hit.collider.gameObject.name == "CareerCenter_Button")

@@ -329,11 +329,42 @@ public class StaticPlayerCEC : MonoBehaviour
 
             if ((hit.collider.gameObject.name == "menu_exit" && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) == true))
             {
+                var sceneName = SceneManager.GetActiveScene().name;
                 PlayerPrefs.SetInt("Swearingen", 1);
                 tutorial.SetActive(false);
                 frontDoorToInside1.SetActive(true);
                 outsideToDorm.SetActive(true);
                 if (Tips != null) { Tips.SetActive(true); }
+                returnCanvas.SetActive(false);
+                if (sceneName == "CECOutsideFar")
+                {
+                    outsideToDorm.SetActive(true);
+                    frontDoorToInside1.SetActive(true);
+                }
+                else if (sceneName == "CECOffice")
+                {
+                    officeToInsideDoor.SetActive(true);
+                }
+                else if (sceneName == "CECInsideDoor")
+                {
+                    insideDoorToOffice.SetActive(true);
+                    insideDoorToInside3.SetActive(true);
+                }
+                else if (sceneName == "CECInside3")
+                {
+                    inside3ToInside2.SetActive(true);
+                    inside3ToInsideDoor.SetActive(true);
+                }
+                else if (sceneName == "CECInside2")
+                {
+                    inside2ToInside1.SetActive(true);
+                    inside2ToInside3.SetActive(true);
+                }
+                else if (sceneName == "CECInside1")
+                {
+                    inside1ToFrontDoor.SetActive(true);
+                    inside1ToInside2.SetActive(true);
+                }
             }
                 /*if (hit.collider.gameObject.name == "frontDeskGO")
                 {
