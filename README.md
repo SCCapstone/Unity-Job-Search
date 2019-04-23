@@ -59,3 +59,4 @@ When installing Unity, make sure `Android Build Support` is selected.
 * All tests are done through the built-in Unity Test Runner. 
 * To access Unity Test Runner, go to Window > General > Test Runner, then select Play Mode then Run All.
 * [More information on Unity Test Runner](https://docs.unity3d.com/Manual/testing-editortestsrunner.html)
+https://streamable.com/r1hw8
