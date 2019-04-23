@@ -95,6 +95,7 @@ public class PlayerScript : MonoBehaviour
         {
             marker.active = true;
             gotMail.active = true;
+            speed = 0.0f;
         }
     }
 
@@ -372,6 +373,7 @@ public class PlayerScript : MonoBehaviour
                     callBack.active = true;
                     visited_jobfair = false;  //***This should trigger the laptop to get an email from an employer***
                     PlayerPrefs.DeleteKey("visited_jobfair");
+                    speed = 18.0f;
                 }
             }
 
@@ -393,6 +395,7 @@ public class PlayerScript : MonoBehaviour
                     interviewBadEnding.active = true;
                     visited_jobfair = false;
                     PlayerPrefs.DeleteKey("visited_jobfair");
+                    speed = 18.0f;
                 }
             }
 
@@ -415,6 +418,7 @@ public class PlayerScript : MonoBehaviour
                     interviewBadEnding.active = true;
                     visited_jobfair = false;
                     PlayerPrefs.DeleteKey("visited_jobfair");
+                    speed = 18.0f;
                 }
             }
 
@@ -428,7 +432,7 @@ public class PlayerScript : MonoBehaviour
                     visited_jobfair = false;
                     PlayerPrefs.DeleteKey("visited_jobfair");
                     q4.active = false;
-
+                    speed = 18.0f;
                     StartCoroutine(Waiting(10.0f));
 
                     youwin.active = true;
@@ -443,6 +447,7 @@ public class PlayerScript : MonoBehaviour
                     q4.active = false;
                     visited_jobfair = false;
                     PlayerPrefs.DeleteKey("visited_jobfair");
+                    speed = 18.0f;
                 }
             }
         }

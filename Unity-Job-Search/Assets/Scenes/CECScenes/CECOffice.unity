@@ -641,14 +641,14 @@ RectTransform:
   m_GameObject: {fileID: 381265356}
   m_LocalRotation: {x: 0.04287838, y: 0.70580554, z: 0.04287838, w: 0.70580554}
   m_LocalPosition: {x: 0, y: 0, z: -10.89}
-  m_LocalScale: {x: 0.1, y: 5, z: 10}
+  m_LocalScale: {x: 0.1, y: 6.02, z: 11.79}
   m_Children: []
   m_Father: {fileID: 1593269046}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 6.9530005}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.2, y: 3.2}
+  m_AnchoredPosition: {x: 3.2, y: 3.1}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!65 &381265358
@@ -2617,7 +2617,8 @@ TextMesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1939324569}
-  m_Text: "After signing in, \nyou will have a 1 on 1\ndiscussion about your \nplans"
+  m_Text: "After signing in, \nyou will have a one-on-one\ndiscussion about your \ncareers
+    and opportunities\navailable"
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
