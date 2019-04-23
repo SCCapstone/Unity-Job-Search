@@ -64,6 +64,7 @@ public class PlayerScript : MonoBehaviour
 
     void Start()
     {
+        
         Debug.Log(PlayerPrefs.HasKey("Tutorial"));
         if (PlayerPrefs.HasKey("Tutorial") == false)
         {
@@ -80,8 +81,8 @@ public class PlayerScript : MonoBehaviour
         img1.enabled = false;
         img2.enabled = false;
 
-        devPhoto.active = false;
-        youwin.active = false;
+        devPhoto.SetActive(false);
+        youwin.SetActive(false); 
 
         q1.active = false;
         q2.active = false;
@@ -435,8 +436,7 @@ public class PlayerScript : MonoBehaviour
                     speed = 18.0f;
                     StartCoroutine(Waiting(10.0f));
 
-                    youwin.active = true;
-                    devPhoto.active = true;
+                    
                 }
             }
             if (hit.collider.gameObject.name == "NoToTraining")
@@ -463,5 +463,7 @@ public class PlayerScript : MonoBehaviour
     IEnumerator Waiting(float t)
     {
         yield return new WaitForSeconds(t);
+        devPhoto.SetActive(true);
+        youwin.SetActive(true);
     }
 }
