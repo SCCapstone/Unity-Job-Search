@@ -128,7 +128,7 @@ public class StaticPlayerScript : MonoBehaviour
                 ccFrontToBack.SetActive(false);
                 ccFrontToDorm.SetActive(false);
             }
-            else if (sceneName == "CECInside2")
+            else if (sceneName == "CareerCenterBack")
             {
                 ccBackToFront.SetActive(false);
                 
@@ -171,7 +171,7 @@ public class StaticPlayerScript : MonoBehaviour
                 ccFrontToBack.SetActive(true);
                 ccFrontToDorm.SetActive(true);
             }
-            else if (sceneName == "CECInside2")
+            else if (sceneName == "CareerCenterBack")
             {
                 ccBackToFront.SetActive(true);
 
@@ -318,6 +318,23 @@ public class StaticPlayerScript : MonoBehaviour
                     tutorial.SetActive(false);
                     ccFrontToBack.SetActive(true);
                     ccFrontToDorm.SetActive(true);
+                    if (Tips != null) { Tips.SetActive(true); }
+                }
+                else if (sceneName == "Inside_Front_Entrance")
+                {
+                    insideToOutside.SetActive(true);
+                    insideToFrontDesk.SetActive(true);
+                    if (Tips != null) { Tips.SetActive(true); }
+                }
+                else if (sceneName == "Inside_Front_Desk")
+                {
+                    frontDeskGO.SetActive(true);
+                    frontDeskToInside.SetActive(true);
+                    if (Tips != null) { Tips.SetActive(true); }
+                }
+                else if (sceneName == "CareerCenterBack")
+                {
+                    ccBackToFront.SetActive(true);
                     if (Tips != null) { Tips.SetActive(true); }
                 }
 
