@@ -39,7 +39,7 @@ When installing Unity, make sure `Android Build Support` is selected.
 * Download and install the [Occulus Go ADB Driver](https://developer.oculus.com/downloads/package/oculus-go-adb-drivers/)
 * Unzip the file and Right click on the **.inf file** and **install.
 
-### Connecting your Go to Build
+### Connecting your Go to Build (INSTALLATION FROM PC TO OCULUS HERE)
 * Connect Go to PC via USB
 * Run `adb devices` to make sure your Go has been connected.
 * In Unity, go to **File > Build Settings** and Build your scenes
@@ -49,8 +49,18 @@ When installing Unity, make sure `Android Build Support` is selected.
 * Inside your GO, Go to **Library > Unknown Sources** and you should see your Built app there.
 
 ### More In-Dept Guide if needed
-[Build on Unity with Go Video](https://www.youtube.com/watch?v=LSypZfOChYE)
-[Article on how to build](https://www.youtube.com/watch?v=LSypZfOChYE)
+* [Build on Unity with Go Video](https://www.youtube.com/watch?v=LSypZfOChYE)
+* [Article on how to build](https://www.youtube.com/watch?v=LSypZfOChYE)
+
+### Installing to PC Common Problems with ADB
+
+IF THE DEVICE DOESNT SHOW UP IN THE ADB COMMAND LINE :
+-Download the new september 2018 release of the platform tools here:
+-https://developer.android.com/studio/...
+-extract the new platform folder,  
+-copy the 4 adb related files from the new folder (adb.exe, 2x adb .dll and fastboot.exe
+move and overwrite the 4 adb files in the C:/adb folder with the new files
+It solved the issue for me on a second computer!
 
 ### Unit and Behaviour Testings
 * Currently Unity Test Runner doesn't seem to have much support for VR/Oculus Go testings.. so we tried it without the controller and VR setups.

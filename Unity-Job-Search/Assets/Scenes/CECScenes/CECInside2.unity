@@ -1234,7 +1234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1028867455
 Transform:
   m_ObjectHideFlags: 0
@@ -1800,6 +1800,11 @@ Prefab:
       propertyPath: inside2ToInside3
       value: 
       objectReference: {fileID: 525602474}
+    - target: {fileID: 114558450403382180, guid: 1832fb25a74e48a4c8e58d769e0ea9fb,
+        type: 2}
+      propertyPath: fkingCamera
+      value: 
+      objectReference: {fileID: 1028867454}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1832fb25a74e48a4c8e58d769e0ea9fb, type: 2}
   m_IsPrefabAsset: 0

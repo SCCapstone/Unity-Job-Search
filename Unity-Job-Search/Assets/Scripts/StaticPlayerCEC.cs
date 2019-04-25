@@ -45,7 +45,7 @@ public class StaticPlayerCEC : MonoBehaviour
     public GameObject CEC;
     public GameObject Tips;
     public GameObject tutorial;
-
+    public GameObject fkingCamera;
     private bool canvasOn;
     //public Text DisplayText;
     //public GameObject Door;
@@ -75,6 +75,7 @@ public class StaticPlayerCEC : MonoBehaviour
     void Start()
     {
         canvasOn = false;
+        fkingCamera.SetActive(true);
         if (PlayerPrefs.HasKey("Swearingen") == false)
         {
 
@@ -331,11 +332,10 @@ public class StaticPlayerCEC : MonoBehaviour
             {
                 var sceneName = SceneManager.GetActiveScene().name;
                 PlayerPrefs.SetInt("Swearingen", 1);
-                tutorial.SetActive(false);
-                frontDoorToInside1.SetActive(true);
-                outsideToDorm.SetActive(true);
-                if (Tips != null) { Tips.SetActive(true); }
                 returnCanvas.SetActive(false);
+                if (tutorial != null) { tutorial.SetActive(false); }
+                
+                if (Tips != null) { Tips.SetActive(true); } 
                 if (sceneName == "CECOutsideFar")
                 {
                     outsideToDorm.SetActive(true);
