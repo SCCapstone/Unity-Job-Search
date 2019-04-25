@@ -39,7 +39,7 @@ When installing Unity, make sure `Android Build Support` is selected.
 * Download and install the [Occulus Go ADB Driver](https://developer.oculus.com/downloads/package/oculus-go-adb-drivers/)
 * Unzip the file and Right click on the **.inf file** and **install.
 
-### Connecting your Go to Build
+### Connecting your Go to Build (INSTALLATION FROM PC TO OCULUS HERE)
 * Connect Go to PC via USB
 * Run `adb devices` to make sure your Go has been connected.
 * In Unity, go to **File > Build Settings** and Build your scenes
