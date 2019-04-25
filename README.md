@@ -49,8 +49,18 @@ When installing Unity, make sure `Android Build Support` is selected.
 * Inside your GO, Go to **Library > Unknown Sources** and you should see your Built app there.
 
 ### More In-Dept Guide if needed
-[Build on Unity with Go Video](https://www.youtube.com/watch?v=LSypZfOChYE)
-[Article on how to build](https://www.youtube.com/watch?v=LSypZfOChYE)
+* [Build on Unity with Go Video](https://www.youtube.com/watch?v=LSypZfOChYE)
+* [Article on how to build](https://www.youtube.com/watch?v=LSypZfOChYE)
+
+### Installing to PC Common Problems with ADB
+
+IF THE DEVICE DOESNT SHOW UP IN THE ADB COMMAND LINE :
+-Download the new september 2018 release of the platform tools here:
+-https://developer.android.com/studio/...
+-extract the new platform folder,  
+-copy the 4 adb related files from the new folder (adb.exe, 2x adb .dll and fastboot.exe
+move and overwrite the 4 adb files in the C:/adb folder with the new files
+It solved the issue for me on a second computer!
 
 ### Unit and Behaviour Testings
 * Currently Unity Test Runner doesn't seem to have much support for VR/Oculus Go testings.. so we tried it without the controller and VR setups.
