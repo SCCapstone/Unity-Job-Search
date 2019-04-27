@@ -75,7 +75,7 @@ public class StaticPlayerCEC : MonoBehaviour
     void Start()
     {
         canvasOn = false;
-        fkingCamera.SetActive(true);
+        if (fkingCamera != null) { fkingCamera.SetActive(true); }
         if (PlayerPrefs.HasKey("Swearingen") == false)
         {
 

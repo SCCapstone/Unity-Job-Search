@@ -14,7 +14,14 @@ public class MenuScript : MonoBehaviour
 
     public GameObject StartCard;
     public GameObject ExitCard;
-
+    void Start()
+    {
+        PlayerPrefs.DeleteAll();
+        if (PlayerPrefs.HasKey("Swearingen"))
+        {
+            Debug.Log("TEST");
+        }
+    }
     void HandlePlayerMovement()
     {
         joystick = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
@@ -40,7 +47,7 @@ public class MenuScript : MonoBehaviour
                 StartCard.GetComponent<VRButtonBehavior>().changeColor();
                 if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) == true)
                 {
-                    PlayerPrefs.DeleteAll();
+                    
                     SceneManager.LoadScene("Dorm");
                     
                 }
